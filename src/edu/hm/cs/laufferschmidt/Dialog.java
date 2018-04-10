@@ -2,6 +2,12 @@ package edu.hm.cs.laufferschmidt;
 
 import java.io.IOException;
 
+/**
+ * Klasse die die Kommunikation mit den Spielern verwaltet.
+ * 
+ * @author Markus Schmidt und Jonas Lauffer
+ *
+ */
 public interface Dialog {
 	/**
 	 * Wartet auf eingabe durch den Benutzer.
