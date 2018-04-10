@@ -3,7 +3,7 @@ package edu.hm.cs.laufferschmidt;
 import java.io.IOException;
 
 /**
- * Klasse die die Kommunikation mit den Spielern verwaltet.
+ * Interface fuer Klassen die die Kommunikation mit den Spielern verwaltet. 
  * 
  * @author Markus Schmidt und Jonas Lauffer
  *
@@ -13,7 +13,7 @@ public interface Dialog {
 	 * Wartet auf eingabe durch den Benutzer.
 	 * Liest Eingabe ein und returnd den Wert.
 	 * @return int Wert den Benutzer eingegeben hat
-	 * @throws IOException
+	 * @throws IOException Einlesen nicht moeglich
 	 */
 	int getNumber() throws IOException;
 	
@@ -23,7 +23,7 @@ public interface Dialog {
 	 * 
 	 * @param s Benutzer a oder b
 	 * @param para Parameterobjekt
-	 * @throws IOException
+	 * @throws IOException Exception
 	 */
 	void askForNumber(String s,Parameter para) throws IOException;
 	
@@ -33,7 +33,7 @@ public interface Dialog {
 	 * @param roundsPlayed Welche runde wurde soeben bendet
 	 * @param playerAScore Punkte von Spieler A
 	 * @param playerBScore Punkte von Spieler B
-	 * @throws IOException
+	 * @throws IOException Exception
 	 */
 	void endOfRound(int roundsPlayed, int playerAScore, int playerBScore) throws IOException;
 	
@@ -42,7 +42,7 @@ public interface Dialog {
 	 * Sende Nachricht wer gewonnen bzw. unentschieden gespielt wurde.
 	 * 
 	 * @param winner Wer das Spiel gewonnen hat
-	 * @throws IOException
+	 * @throws IOException 
 	 */
 	void printWinner(String winner) throws IOException;
 }

@@ -34,7 +34,7 @@ public interface Rule {
 	 * 
 	 * @param playerAScore Punktestand Spieler A
 	 * @param playerBScore Punktestand Spieler B
-	 * @return
+	 * @return Welcher Spieler gewonnen hat, oder unentschieden
 	 */
 	String determineWinner(int playerAScore, int playerBScore);
 }

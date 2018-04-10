@@ -8,7 +8,7 @@ package edu.hm.cs.laufferschmidt;
 public interface Parameter {
 	
 	/**
-	 * Liefert den zu erreichenden Punktestand zurueck, wann das Spiel gewonnen ist,
+	 * Liefert den zu erreichenden Punktestand zurueck, wann das Spiel gewonnen ist.
 	 * @return zu erreidenden Punktestand. 
 	 */
 	int getScoreToWin();

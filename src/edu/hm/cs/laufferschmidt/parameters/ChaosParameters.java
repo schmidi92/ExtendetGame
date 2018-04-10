@@ -6,10 +6,11 @@ public class ChaosParameters implements Parameter{
 	
 	private final int[][] para = {{1,4},{1,3,5},{2,5}};
 	private int instableCount = 0;
+	private final int SCORETOWIN = 12;
 	
 	@Override
 	public int getScoreToWin(){
-		return 12;
+		return SCORETOWIN;
 	}
 	@Override
 	public int getMaxChoice(){

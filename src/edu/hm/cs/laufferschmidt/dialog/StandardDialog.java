@@ -1,17 +1,23 @@
 package edu.hm.cs.laufferschmidt.dialog;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 
 import edu.hm.cs.laufferschmidt.Dialog;
 import edu.hm.cs.laufferschmidt.Parameter;
 
+/**
+ * Klasse die die Kommunikation mit den Spielern verwaltet. Dateneingabe und
+ * Ausgabe findet ueber Konsole statt.
+ * 
+ * @author Markus Schmidt und Jonas Lauffer
+ *
+ */
 public class StandardDialog implements Dialog{
 	
 	@Override
 	public int getNumber() throws IOException{
 		
-		int result = System.in.read();
+		final int result = System.in.read();
 		System.in.skip(50000);
 		if(result < 0)
             throw new IOException(); // bomb out on end of input

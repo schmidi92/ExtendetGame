@@ -2,20 +2,22 @@ package edu.hm.cs.laufferschmidt.dialog;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 import edu.hm.cs.laufferschmidt.Dialog;
 import edu.hm.cs.laufferschmidt.Parameter;
 
+/**
+ * Klasse die die Kommunikation mit den Spielern verwaltet. Dateneingabe und
+ * Ausgabe findet ueber Netzwerk statt.
+ * 
+ * @author Markus Schmidt und Jonas Lauffer
+ *
+ */
 public class SocketDialog implements Dialog {
 
 	// Socket sendPlayerA = new Socket(InetAddress.getByName("127.0.0.1"),

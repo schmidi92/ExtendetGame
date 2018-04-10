@@ -9,5 +9,13 @@ public class Main {
 		int int2 = Integer.parseInt(test);
 		System.out.println(int2);
 	}
+	
+	/**
+	 * 
+	 * @param wer
+	 */
+	public void tset(int wer){
+		System.out.println("tasdf");
+	}
 
 }
