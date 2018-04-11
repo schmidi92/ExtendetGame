@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import edu.hm.cs.laufferschmidt.Dialog;
 import edu.hm.cs.laufferschmidt.Parameter;
@@ -19,14 +21,14 @@ import edu.hm.cs.laufferschmidt.Parameter;
  */
 public class FileDialog implements Dialog {
 
-	/**
-	 * File aus dem der Input gelesen wird.
-	 */
-	private final File fileToRead = new File(System.getProperty("java.io.tmpdir") + "undercut.in.txt");
-	/**
-	 * File in den der Ouput geschrieben wird.
-	 */
-	private final File fileToWrite = new File(System.getProperty("java.io.tmpdir") + "undercut.out.txt");
+//	/**
+//	 * File aus dem der Input gelesen wird.
+//	 */
+//	private final File fileToRead = new File(System.getProperty("java.io.tmpdir") + "undercut.in.txt");
+//	/**
+//	 * File in den der Ouput geschrieben wird.
+//	 */
+//	private final File fileToWrite = new File(System.getProperty("java.io.tmpdir") + "undercut.out.txt");
 	/**
 	 * Reader um textfile auszulesen.
 	 */
@@ -43,8 +45,9 @@ public class FileDialog implements Dialog {
 	 *             File konnte nicht gefunden werden
 	 */
 	public FileDialog() throws IOException {
-		reader = new BufferedReader(new FileReader(fileToRead));
-		writer = new BufferedWriter(new FileWriter(fileToWrite));
+		
+		reader = Files.newBufferedReader(Paths.get(System.getProperty("java.io.tmpdir") + "undercut.in.txt"));
+		writer = Files.newBufferedWriter(Paths.get(System.getProperty("java.io.tmpdir") + "undercut.out.txt"));
 	}
 
 	@Override
