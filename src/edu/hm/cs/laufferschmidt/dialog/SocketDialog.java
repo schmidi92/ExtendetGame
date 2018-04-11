@@ -23,33 +23,43 @@ public class SocketDialog implements Dialog {
 	/**
 	 * ServerSocket auf Port 2001.
 	 */
-	ServerSocket playerA;
+	private ServerSocket playerA;
 	/**
 	 * ServerSocket aud Port 2002.
 	 */
-	ServerSocket playerB;
+	private ServerSocket playerB;
 	/**
-	 * Socket verbunden zu Player A;
+	 * Socket verbunden zu Player A.
 	 */
-	Socket connectA;
+	private Socket connectA;
 	/**
 	 * Socket verbunden zu Player B.
 	 */
-	Socket connectB;
+	private Socket connectB;
 	/**
 	 * Bool ob Player A oder Player B angesprochen wird.
 	 */
-	boolean playA;
+	private boolean playA;
+	
+	/**
+	 * Port auf dem Server fuer Spieler A hoert.
+	 */
+	private final int portSpielerA = 2001;
+	
+	/**
+	 * Port auf dem Server fuer Spieler B hoert.
+	 */
+	private final int portSpielerB = 2002;
 
 	/**
 	 * Konstruktor, akzeptiert eine Verbindung auf Port 2001, anschliessend auf Port 2002.
 	 * @throws IOException SocketException.
 	 */
 	public SocketDialog() throws IOException {
-		playerA = new ServerSocket(2001);
+		playerA = new ServerSocket(portSpielerA);
 		connectA = playerA.accept();
 		System.out.println("A connected");
-		playerB = new ServerSocket(2002);
+		playerB = new ServerSocket(portSpielerB);
 		connectB = playerB.accept();
 		System.out.println("B connected");
 	}
@@ -103,6 +113,12 @@ public class SocketDialog implements Dialog {
 		writeTo(writerB, winner + '\n');
 	}
 	
+	/**
+	 * Schreibt message an den jeweiligen Spieler.
+	 * @param writer Writer fuer den Spieler
+	 * @param message Nachricht an den Spieler
+	 * @throws IOException IOException
+	 */
 	private void writeTo(BufferedWriter writer, String message) throws IOException{
 		writer.write(message);
 		writer.flush();
