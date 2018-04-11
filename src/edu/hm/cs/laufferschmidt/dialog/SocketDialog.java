@@ -90,11 +90,9 @@ public class SocketDialog implements Dialog {
 			System.out.println("bereit zu lesen von A");
 //			BufferedReader readerA = new BufferedReader(new InputStreamReader(connectA.getInputStream()));
 			result = readerA.read() - '0';
-			System.out.println("A Number" + result);
 		} else {
 //			BufferedReader readerB = new BufferedReader(new InputStreamReader(connectB.getInputStream()));
 			result = readerB.read() - '0';
-			System.out.println("B Number" + result);
 		}
 
 		return result;

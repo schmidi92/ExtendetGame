@@ -40,7 +40,6 @@ public class QuickParameters implements Parameter {
 
 	@Override
 	public boolean isValidNumber(int number) {
-		System.out.println("Valid:" + (number >= getMinChoice() && number <= this.getMaxChoice()));
 		return number >= getMinChoice() && number <= this.getMaxChoice();
 	}
 
