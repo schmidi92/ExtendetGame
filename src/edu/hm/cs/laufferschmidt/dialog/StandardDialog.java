@@ -1,6 +1,5 @@
 package edu.hm.cs.laufferschmidt.dialog;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,9 +23,12 @@ public class StandardDialog implements Dialog{
 		
 		final BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 		final String line=input.readLine();
-		final int result = line.charAt(0);
-		if(result < 0)
-            throw new IOException(); // bomb out on end of input
+		final int result;
+		if(line == null){
+			throw new IOException();
+		} else {
+			result = line.charAt(0);
+		}
 		return result - '0';
 		
 	}
