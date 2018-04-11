@@ -27,17 +27,7 @@ import edu.hm.cs.laufferschmidt.rules.TwoDiffRule;
  * @see <a href="http://www.ams.org/publicoutreach/msamhome/96-undercut-index.html">Undercut</a>
  */
 public class UndercutMono {
-    /**
-     * Entry point.
-     * @param args Commandline args: none.
-     * @exception IOException on incomplete input.
-     */
-    public static void main(String... args) throws IOException {
-    	Parameter para= new QuickParameters();
-    	Dialog dial=new SocketDialog();
-    	Rule rules =  new DrawPotRule();
-        new UndercutMono().play(para,dial,rules);
-    }
+    
 
     /**
      * Runs an Undercut game.
