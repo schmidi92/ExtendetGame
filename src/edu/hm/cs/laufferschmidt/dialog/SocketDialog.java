@@ -21,14 +21,14 @@ import edu.hm.cs.laufferschmidt.Parameter;
 public class SocketDialog implements Dialog {
 
 
-	/**
-	 * Socket verbunden zu Player A.
-	 */
-	private Socket connectA;
-	/**
-	 * Socket verbunden zu Player B.
-	 */
-	private Socket connectB;
+//	/**
+//	 * Socket verbunden zu Player A.
+//	 */
+//	private Socket connectA;
+//	/**
+//	 * Socket verbunden zu Player B.
+//	 */
+//	private Socket connectB;
 	/**
 	 * Bool ob Player A oder Player B angesprochen wird.
 	 */
@@ -37,12 +37,12 @@ public class SocketDialog implements Dialog {
 	/**
 	 * Port auf dem Server fuer Spieler A hoert.
 	 */
-	private final int portSpielerA = 2001;
+	private static final  int PORTPLAYERA = 2001;
 	
 	/**
 	 * Port auf dem Server fuer Spieler B hoert.
 	 */
-	private final int portSpielerB = 2002;
+	private static final  int PORTPLAYERB = 2002;
 	
 	/**
 	 * Reader fuer Input von Player A.
@@ -67,11 +67,13 @@ public class SocketDialog implements Dialog {
 	 * @throws IOException SocketException.
 	 */
 	public SocketDialog() throws IOException {
-		try(ServerSocket playerA = new ServerSocket(portSpielerA);
-				ServerSocket playerB = new ServerSocket(portSpielerB)){
-			connectA = playerA.accept();
+		Socket connectA;
+		Socket connectB;
+		try(ServerSocket playerA = new ServerSocket(PORTPLAYERA);
+				ServerSocket playerB = new ServerSocket(PORTPLAYERB)){
+			 connectA = playerA.accept();
 			System.out.println("A connected");
-			connectB = playerB.accept();
+			 connectB = playerB.accept();
 			System.out.println("B connected");
 		}
 			
@@ -99,7 +101,7 @@ public class SocketDialog implements Dialog {
 
 	@Override
 	public void askForNumber(String player, Parameter para) throws IOException {
-		if (player.toLowerCase().equals("a")) {
+		if (player.equalsIgnoreCase("a")) {
 			writeTo(writerA, "Player " + player.toUpperCase() + ", your choice " + para.toString() + '\n');
 			playA = true;
 		} else {

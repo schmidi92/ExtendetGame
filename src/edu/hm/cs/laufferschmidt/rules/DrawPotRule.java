@@ -14,37 +14,37 @@ public class DrawPotRule implements Rule {
 	/**
 	 * Die punktezahl im gemeinsamen Topf.
 	 */
-	private int potValue = 0;
+	private int pointsInPot;
 	/**
 	 * Die Anzahlt an hintereinander gekommenen Gleichstaenden.
 	 */
-	private int consecutiveDraw = 0;
+	private int consecutiveDraw;
 	
 	/**
 	 * Schwelle nach wie vielen unentschieden, das Spiel bendet wird.
 	 */
-	private final int drawThreshold = 3;
+	private static final int DRAWTHRESHOLD = 3;
 
 	@Override
 	public int[] evaluateScores(int playerAChoice, int playerBChoice) {
 		final int[] matchScore = new int[2];
 		//bei A undercut B bekommt A die Punkte und den Topf, consecutiveDraw reset
 		if (playerAChoice == playerBChoice - 1) {
-			matchScore[0] = playerAChoice + playerBChoice + potValue;
-			potValue = 0;
+			matchScore[0] = playerAChoice + playerBChoice + pointsInPot;
+			pointsInPot = 0;
 			consecutiveDraw = 0;
 		}
 
 		//bei B undercut A bekommt B die Punkte und den Topf, consecutiveDraw reset
 		else if (playerBChoice == playerAChoice - 1) {
-			matchScore[1] = playerAChoice + playerBChoice + potValue;
-			potValue = 0;
+			matchScore[1] = playerAChoice + playerBChoice + pointsInPot;
+			pointsInPot = 0;
 			consecutiveDraw = 0;
 		}
 
 		//Gleichstand, Punkte kommen in den Topf, consecutiveDraw wird rauf gezaehlt
 		else if (playerAChoice == playerBChoice) {
-			potValue += playerAChoice + playerBChoice;
+			pointsInPot += playerAChoice + playerBChoice;
 			++consecutiveDraw;
 		}
 		//Beide bekommen ihre Punkte, concsecutiveDraw reset
@@ -60,7 +60,7 @@ public class DrawPotRule implements Rule {
 	public boolean gameStillrunning(int playerAScore, int playerBScore, Parameter para) {
 		boolean stillRunning = playerAScore < para.getScoreToWin() && playerBScore < para.getScoreToWin();
 		//Falls drei Gleichstande hintereinander waren bricht das Spiel ab
-		if (consecutiveDraw == drawThreshold) {
+		if (consecutiveDraw == DRAWTHRESHOLD) {
 			stillRunning = false;
 		}
 		
@@ -71,7 +71,7 @@ public class DrawPotRule implements Rule {
 	public String determineWinner(int playerAScore, int playerBScore) {
 		String winner;
 		//Spiel ist Unentschieden, da drei Gleichstaende hintereinander waren
-		if (consecutiveDraw == drawThreshold || playerAScore == playerBScore)
+		if (consecutiveDraw == DRAWTHRESHOLD || playerAScore == playerBScore)
 			winner = "Tie";
 		else if (playerAScore > playerBScore)
 			winner = "Player A wins";

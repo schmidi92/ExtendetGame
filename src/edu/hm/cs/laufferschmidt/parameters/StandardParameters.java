@@ -13,28 +13,28 @@ public class StandardParameters implements Parameter {
 	/**
 	 * Punktezahl, bei der das Spiel gewonnen ist.
 	 */
-	private final int scoreToWin = 40;
+	private static final int SCORETOWIN = 40;
 	/**
 	 * Maximaler Wert den ein Spieler auswaehlen kann.
 	 */
-	private final int maxChoice = 5;
+	private static final int MAXCHOICE = 5;
 	/**
 	 * Minimaler Wert den ein Spieler auswaehlen kann.
 	 */
-	private final int minChoice = 1;
+	private static final int MINCHOICE = 1;
 	
 	@Override
 	public int getScoreToWin() {
-		return scoreToWin;
+		return SCORETOWIN;
 	}
 
 	@Override
 	public int getMaxChoice() {
-		return maxChoice;
+		return MAXCHOICE;
 	}
 
 	public int getMinChoice() {
-		return minChoice;
+		return MINCHOICE;
 	}
 
 	@Override

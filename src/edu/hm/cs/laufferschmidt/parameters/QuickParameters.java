@@ -13,29 +13,29 @@ public class QuickParameters implements Parameter {
 	/**
 	 * Punktezahl, bei der das Spiel gewonnen ist.
 	 */
-	private final int scoreToWin = 12;
+	private static final int SCORETOWIN = 12;
 	/**
 	 * Maximaler Wert den ein Spieler auswaehlen kann.
 	 */
-	private final int maxChoice = 3;
+	private static final int MAXCHOICE = 3;
 	/**
 	 * Minimaler Wert den ein Spieler auswaehlen kann.
 	 */
-	private final int minChoice = 1;
+	private static final int MINCHOICE = 1;
 
 	@Override
 	public int getScoreToWin() {
-		return scoreToWin;
+		return SCORETOWIN;
 	}
 
 	@Override
 	public int getMaxChoice() {
-		return maxChoice;
+		return MAXCHOICE;
 	}
 
 	@Override
 	public int getMinChoice() {
-		return minChoice;
+		return MINCHOICE;
 	}
 
 	@Override
