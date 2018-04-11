@@ -13,7 +13,7 @@ public class StandardRule implements Rule {
 
 	@Override
 	public int[] evaluateScores(int playerAChoice, int playerBChoice) {
-		int[] matchScore = new int[2];
+		final int[] matchScore = new int[2];
 		//Player A undercut Player b, A bekommt alle Punkte
 		if (playerAChoice == playerBChoice - 1)
 			matchScore[0] = playerAChoice + playerBChoice;
