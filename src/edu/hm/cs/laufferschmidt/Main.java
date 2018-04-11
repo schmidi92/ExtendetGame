@@ -6,11 +6,15 @@ import edu.hm.cs.laufferschmidt.parameters.QuickParameters;
 import edu.hm.cs.laufferschmidt.rules.DrawPotRule;
 import edu.hm.cs.rs.arch.a03_srp.UndercutMono;
 
+<<<<<<< HEAD
 /**
  * Main Klasse, startet das Programm.
  * @author Markus Schmidt und Jonas Lauffer
  *
  */
+=======
+
+>>>>>>> ebe671dafb0f90da788a301481296b605ce7e818
 public class Main {
 	
 	/**
