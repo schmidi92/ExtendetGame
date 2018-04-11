@@ -18,14 +18,7 @@ import edu.hm.cs.laufferschmidt.Parameter;
  */
 public class FileDialog implements Dialog {
 
-//	/**
-//	 * File aus dem der Input gelesen wird.
-//	 */
-//	private final File fileToRead = new File(System.getProperty("java.io.tmpdir") + "undercut.in.txt");
-//	/**
-//	 * File in den der Ouput geschrieben wird.
-//	 */
-//	private final File fileToWrite = new File(System.getProperty("java.io.tmpdir") + "undercut.out.txt");
+
 	/**
 	 * Reader um textfile auszulesen.
 	 */

@@ -2,7 +2,6 @@ package edu.hm.cs.laufferschmidt;
 import java.io.IOException;
 
 import edu.hm.cs.laufferschmidt.dialog.FileDialog;
-import edu.hm.cs.laufferschmidt.dialog.SocketDialog;
 import edu.hm.cs.laufferschmidt.parameters.QuickParameters;
 import edu.hm.cs.laufferschmidt.rules.DrawPotRule;
 import edu.hm.cs.rs.arch.a03_srp.UndercutMono;
