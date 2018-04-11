@@ -16,9 +16,11 @@ public class StandardDialog implements Dialog{
 	
 	@Override
 	public int getNumber() throws IOException{
-		
+		//read liest zahl und enter als 2 unterschiedliche Eingaben
+		// enter ('/n') muss ubersprungen werden
+		final int skipNewLine = 2;
 		final int result = System.in.read();
-		System.in.skip(50000);
+		System.in.skip(skipNewLine);
 		if(result < 0)
             throw new IOException(); // bomb out on end of input
 		return result - '0';

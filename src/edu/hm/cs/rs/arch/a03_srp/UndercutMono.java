@@ -4,21 +4,11 @@
  **/
 package edu.hm.cs.rs.arch.a03_srp; //X
 
-import java.awt.dnd.DragGestureEvent;
 import java.io.IOException;
 
 import edu.hm.cs.laufferschmidt.Dialog;
 import edu.hm.cs.laufferschmidt.Parameter;
 import edu.hm.cs.laufferschmidt.Rule;
-import edu.hm.cs.laufferschmidt.dialog.FileDialog;
-import edu.hm.cs.laufferschmidt.dialog.SocketDialog;
-import edu.hm.cs.laufferschmidt.dialog.StandardDialog;
-import edu.hm.cs.laufferschmidt.parameters.ChaosParameters;
-import edu.hm.cs.laufferschmidt.parameters.QuickParameters;
-import edu.hm.cs.laufferschmidt.parameters.StandardParameters;
-import edu.hm.cs.laufferschmidt.rules.DrawPotRule;
-import edu.hm.cs.laufferschmidt.rules.StandardRule;
-import edu.hm.cs.laufferschmidt.rules.TwoDiffRule;
 
 /**
  * Monolithic version of Undercut. Violates lots of design principles.
@@ -32,6 +22,9 @@ public class UndercutMono {
     /**
      * Runs an Undercut game.
      * Gets input from System.in, prints output to System.out.
+     * @param para Parameterobjekt welche Parameter das Spiel verwendet
+     * @param dialog Dialogobjekt wie die Dialogfuehrung funktioniert
+     * @param rules Regelobjekt welche Regeln das Spiel hat
      * @exception IOException on incomplete input.
      */
     public void play(Parameter para,Dialog dialog, Rule rules) throws IOException {
@@ -63,15 +56,7 @@ public class UndercutMono {
             while(!para.isValidNumber(playerBChoice));
 
             // update scores
-//            if(playerAChoice == playerBChoice - 1)
-//                playerAScore += playerAChoice + playerBChoice;
-//            else if(playerBChoice == playerAChoice - 1)
-//                playerBScore += playerAChoice + playerBChoice;
-//            else {
-//                playerAScore += playerAChoice;
-//                playerBScore += playerBChoice;
-//            }
-            int [] score = rules.evaluateScores(playerAChoice, playerBChoice);
+            final int [] score = rules.evaluateScores(playerAChoice, playerBChoice);
           	playerAScore+=score[0];
           	playerBScore+=score[1];
           	roundsPlayed++;

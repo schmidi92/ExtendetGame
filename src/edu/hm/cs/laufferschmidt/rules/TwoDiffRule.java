@@ -15,7 +15,7 @@ public class TwoDiffRule implements Rule {
 	
 	@Override
 	public int[] evaluateScores(int playerAChoice,int playerBChoice){
-		int[] matchScore = new int[2];
+		final int[] matchScore = new int[2];
 		 if(playerAChoice == playerBChoice - 1)
 			 matchScore[0]=playerAChoice + playerBChoice;
             // PlayerA macht undercut
