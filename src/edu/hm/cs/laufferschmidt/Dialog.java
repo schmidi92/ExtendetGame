@@ -18,14 +18,14 @@ public interface Dialog {
 	int getNumber() throws IOException;
 	
 	/**
-	 * Fordert den Benutzer auf eine Eingabe zu machen. 
+	 * Fordert den Spieler auf eine Eingabe zu machen. 
 	 * Mit welcher Zahl der Benutzer die Runde spielen moechte.
 	 * 
-	 * @param s Benutzer a oder b
+	 * @param spieler Spieler a oder b
 	 * @param para Parameterobjekt
 	 * @throws IOException Exception
 	 */
-	void askForNumber(String s,Parameter para) throws IOException;
+	void askForNumber(String spieler,Parameter para) throws IOException;
 	
 	/**
 	 * Zeigt beiden Spielern an, dass die Runde zu ende ist.

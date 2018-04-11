@@ -11,6 +11,13 @@ import edu.hm.cs.laufferschmidt.Rule;
  *
  */
 public class DrawPotRule implements Rule {
+	
+	/**
+	 * Schwelle nach wie vielen unentschieden, das Spiel bendet wird.
+	 */
+	private static final int DRAWTHRESHOLD = 3;
+	
+	
 	/**
 	 * Die punktezahl im gemeinsamen Topf.
 	 */
@@ -20,10 +27,6 @@ public class DrawPotRule implements Rule {
 	 */
 	private int consecutiveDraw;
 	
-	/**
-	 * Schwelle nach wie vielen unentschieden, das Spiel bendet wird.
-	 */
-	private static final int DRAWTHRESHOLD = 3;
 
 	@Override
 	public int[] evaluateScores(int playerAChoice, int playerBChoice) {
