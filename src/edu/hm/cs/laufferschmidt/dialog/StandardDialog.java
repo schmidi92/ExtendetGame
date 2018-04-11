@@ -1,6 +1,9 @@
 package edu.hm.cs.laufferschmidt.dialog;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import edu.hm.cs.laufferschmidt.Dialog;
 import edu.hm.cs.laufferschmidt.Parameter;
@@ -18,9 +21,10 @@ public class StandardDialog implements Dialog{
 	public int getNumber() throws IOException{
 		//read liest zahl und enter als 2 unterschiedliche Eingaben
 		// enter ('/n') muss ubersprungen werden
-		final int skipNewLine = 2;
-		final int result = System.in.read();
-		System.in.skip(skipNewLine);
+		
+		final BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+		final String line=input.readLine();
+		final int result = line.charAt(0);
 		if(result < 0)
             throw new IOException(); // bomb out on end of input
 		return result - '0';
