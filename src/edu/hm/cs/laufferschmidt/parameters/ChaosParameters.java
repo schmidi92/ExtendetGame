@@ -10,15 +10,6 @@ import edu.hm.cs.laufferschmidt.Parameter;
 public class ChaosParameters implements Parameter{
 	
 	/**
-	 * Array mit den unterschiedlichen Parametern.
-	 */
-	private final int[][] para = {{1,4},{1,3,5},{2,5}};
-	
-	/**
-	 * Hilfsattribut um die Parameter rotieren zu lassen.
-	 */
-	private  int instableCount;
-	/**
 	 * Punktezahl, bei der das Spiel gewonnen ist.
 	 */
 	private static final int SCORETOWIN = 12;
@@ -27,6 +18,18 @@ public class ChaosParameters implements Parameter{
 	 * Anzahl der unterschiedlichen Parameter.
 	 */
 	private static final int PARACOUNT = 3;
+	
+	/**
+	 * Array mit den unterschiedlichen Parametern.
+	 */
+	private final int[][] para = {{1,4},{1,3,5},{2,5}};
+	
+	/**
+	 * Hilfsattribut um die Parameter rotieren zu lassen.
+	 */
+	private  int instableCount;
+	
+	
 	
 	@Override
 	public int getScoreToWin(){

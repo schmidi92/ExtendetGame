@@ -20,7 +20,16 @@ import edu.hm.cs.laufferschmidt.Parameter;
  */
 public class SocketDialog implements Dialog {
 
-
+	/**
+	 * Port auf dem Server fuer Spieler A hoert.
+	 */
+	private static final int PORTPLAYERA = 2001;
+	
+	/**
+	 * Port auf dem Server fuer Spieler B hoert.
+	 */
+	private static final  int PORTPLAYERB = 2002;
+	
 //	/**
 //	 * Socket verbunden zu Player A.
 //	 */
@@ -34,15 +43,6 @@ public class SocketDialog implements Dialog {
 	 */
 	private boolean playA;
 	
-	/**
-	 * Port auf dem Server fuer Spieler A hoert.
-	 */
-	private static final  int PORTPLAYERA = 2001;
-	
-	/**
-	 * Port auf dem Server fuer Spieler B hoert.
-	 */
-	private static final  int PORTPLAYERB = 2002;
 	
 	/**
 	 * Reader fuer Input von Player A.
@@ -67,8 +67,8 @@ public class SocketDialog implements Dialog {
 	 * @throws IOException SocketException.
 	 */
 	public SocketDialog() throws IOException {
-		Socket connectA;
-		Socket connectB;
+		final Socket connectA;
+		final Socket connectB;
 		try(ServerSocket playerA = new ServerSocket(PORTPLAYERA);
 				ServerSocket playerB = new ServerSocket(PORTPLAYERB)){
 			 connectA = playerA.accept();
@@ -101,7 +101,7 @@ public class SocketDialog implements Dialog {
 
 	@Override
 	public void askForNumber(String player, Parameter para) throws IOException {
-		if (player.equalsIgnoreCase("a")) {
+		if ("a".equalsIgnoreCase(player)) {
 			writeTo(writerA, "Player " + player.toUpperCase() + ", your choice " + para.toString() + '\n');
 			playA = true;
 		} else {
