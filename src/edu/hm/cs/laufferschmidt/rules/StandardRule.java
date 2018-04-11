@@ -3,22 +3,27 @@ package edu.hm.cs.laufferschmidt.rules;
 import edu.hm.cs.laufferschmidt.Parameter;
 import edu.hm.cs.laufferschmidt.Rule;
 
+/**
+ * Klasse mit Hoffstaedter Undercut Regeln.
+ * 
+ * @author Markus Schmidt und Jonas Lauffer
+ *
+ */
 public class StandardRule implements Rule {
 
 	@Override
 	public int[] evaluateScores(int playerAChoice, int playerBChoice) {
 		int[] matchScore = new int[2];
+		//Player A undercut Player b, A bekommt alle Punkte
 		if (playerAChoice == playerBChoice - 1)
 			matchScore[0] = playerAChoice + playerBChoice;
-		// playerAScore += playerAChoice + playerBChoice;
+		//Player b undercut Player A, b Bekommt alle Punkte
 		else if (playerBChoice == playerAChoice - 1)
 			matchScore[1] = playerAChoice + playerBChoice;
-		// playerBScore += playerAChoice + playerBChoice;
+		//beide bekommen ihre Punkte
 		else {
 			matchScore[0] = playerAChoice;
 			matchScore[1] = playerBChoice;
-			// playerAScore += playerAChoice;
-			// playerBScore += playerBChoice;
 		}
 		return matchScore;
 	}

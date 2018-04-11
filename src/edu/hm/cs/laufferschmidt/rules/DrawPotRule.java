@@ -2,41 +2,51 @@ package edu.hm.cs.laufferschmidt.rules;
 
 import edu.hm.cs.laufferschmidt.Parameter;
 import edu.hm.cs.laufferschmidt.Rule;
-
+/**
+ * Klasse fuer neue Spielregeln. Bei Gleichstand werden beide Punktzahlen in einen Topf geworfen
+ * und erst beim naechsten undercut dem Gewinner zugeschrieben. Bei dreimaligen Gleichstand hintereinander 
+ * endet das Spiel in einem Tie.
+ * 
+ * @author  Markus Schmidt und Jonas Lauffer
+ *
+ */
 public class DrawPotRule implements Rule {
-
+	/**
+	 * Die punktezahl im gemeinsamen Topf.
+	 */
 	private int PotValue = 0;
+	/**
+	 * Die Anzahlt an hintereinander gekommenen Gleichstaenden.
+	 */
 	private int consecutiveDraw = 0;
 
 	@Override
 	public int[] evaluateScores(int playerAChoice, int playerBChoice) {
 		int[] matchScore = new int[2];
+		//bei A undercut B bekommt A die Punkte und den Topf, consecutiveDraw reset
 		if (playerAChoice == playerBChoice - 1) {
 			matchScore[0] = playerAChoice + playerBChoice + PotValue;
 			PotValue = 0;
 			consecutiveDraw = 0;
 		}
 
-		// playerAScore += playerAChoice + playerBChoice;
+		//bei B undercut A bekommt B die Punkte und den Topf, consecutiveDraw reset
 		else if (playerBChoice == playerAChoice - 1) {
 			matchScore[1] = playerAChoice + playerBChoice + PotValue;
 			PotValue = 0;
 			consecutiveDraw = 0;
 		}
 
-		// playerBScore += playerAChoice + playerBChoice;
+		//Gleichstand, Punkte kommen in den Topf, consecutiveDraw wird rauf gezaehlt
 		else if (playerAChoice == playerBChoice) {
 			PotValue += (playerAChoice + playerBChoice);
 			++consecutiveDraw;
-			if (consecutiveDraw == 3) {
-
-			}
-		} else {
+		}
+		//Beide bekommen ihre Punkte, concsecutiveDraw reset
+		else {
 			matchScore[0] = playerAChoice;
 			matchScore[1] = playerBChoice;
 			consecutiveDraw = 0;
-			// playerAScore += playerAChoice;
-			// playerBScore += playerBChoice;
 		}
 		return matchScore;
 	}
@@ -44,6 +54,7 @@ public class DrawPotRule implements Rule {
 	@Override
 	public boolean gameStillrunning(int playerAScore, int playerBScore, Parameter para) {
 		boolean stillRunning = playerAScore < para.getScoreToWin() && playerBScore < para.getScoreToWin();
+		//Falls drei Gleichstande hintereinander waren bricht das Spiel ab
 		if (consecutiveDraw == 3) {
 			stillRunning = false;
 		}
@@ -54,6 +65,7 @@ public class DrawPotRule implements Rule {
 	@Override
 	public String determineWinner(int playerAScore, int playerBScore) {
 		String winner;
+		//Spiel ist Unentschieden, da drei Gleichstaende hintereinander waren
 		if (consecutiveDraw == 3 || playerAScore == playerBScore)
 			winner = "Tie";
 		else if (playerAScore > playerBScore)

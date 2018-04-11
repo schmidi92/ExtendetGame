@@ -20,21 +20,31 @@ import edu.hm.cs.laufferschmidt.Parameter;
  */
 public class SocketDialog implements Dialog {
 
-	// Socket sendPlayerA = new Socket(InetAddress.getByName("127.0.0.1"),
-	// 2001);
-	// Socket sendPlayerB = new Socket(InetAddress.getByName("127.0.0.1"),
-	// 2002);
-
+	/**
+	 * ServerSocket auf Port 2001.
+	 */
 	ServerSocket playerA;
+	/**
+	 * ServerSocket aud Port 2002.
+	 */
 	ServerSocket playerB;
+	/**
+	 * Socket verbunden zu Player A;
+	 */
 	Socket connectA;
+	/**
+	 * Socket verbunden zu Player B.
+	 */
 	Socket connectB;
+	/**
+	 * Bool ob Player A oder Player B angesprochen wird.
+	 */
 	boolean playA;
 
-	// BufferedReader readA = new BufferedReader()
-	// final private BufferedReader reader;
-	// final private BufferedWriter writer;
-
+	/**
+	 * Konstruktor, akzeptiert eine Verbindung auf Port 2001, anschliessend auf Port 2002.
+	 * @throws IOException SocketException.
+	 */
 	public SocketDialog() throws IOException {
 		playerA = new ServerSocket(2001);
 		connectA = playerA.accept();

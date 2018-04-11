@@ -3,6 +3,14 @@ package edu.hm.cs.laufferschmidt.rules;
 import edu.hm.cs.laufferschmidt.Parameter;
 import edu.hm.cs.laufferschmidt.Rule;
 
+/**
+ * Klasse mit Hoffstaedter Undercut Regeln.
+ * Dazu zusaetzliche Regel, bei einer Differenz von 2 bekommt der Spieler mit der
+ * hoeheren Zahl alle Punkte. 
+ * 
+ * @author Markus Schmidt und Jonas Lauffer
+ *
+ */
 public class TwoDiffRule implements Rule {
 	
 	@Override
@@ -24,8 +32,6 @@ public class TwoDiffRule implements Rule {
          else {
         	 matchScore[0]=playerAChoice;
         	 matchScore[1]=playerBChoice;
-     //        playerAScore += playerAChoice;
-       //      playerBScore += playerBChoice;
          }
 		 return matchScore;
 	}

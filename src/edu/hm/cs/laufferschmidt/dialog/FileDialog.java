@@ -59,11 +59,6 @@ public class FileDialog implements Dialog {
 
 		System.out.println(number);
 		return number;
-		// int result = System.in.read();
-		// System.in.skip(50000);
-		// if(result < 0)
-		// throw new IOException(); // bomb out on end of input
-		// return result;
 
 	}
 
