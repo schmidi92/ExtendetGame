@@ -1,6 +1,7 @@
 package edu.hm.cs.laufferschmidt;
 import java.io.IOException;
 
+import edu.hm.cs.laufferschmidt.dialog.FileDialog;
 import edu.hm.cs.laufferschmidt.dialog.SocketDialog;
 import edu.hm.cs.laufferschmidt.parameters.QuickParameters;
 import edu.hm.cs.laufferschmidt.rules.DrawPotRule;
@@ -30,7 +31,7 @@ public class Main {
     	/**
     	 * Objekt zur Dialog Fuehrung.
     	 */
-    	final Dialog dial=new SocketDialog();
+    	final Dialog dial=new FileDialog();
     	
     	/**
     	 * Obekt fur die Spielregeln.
