@@ -52,7 +52,8 @@ public class FileDialog implements Dialog {
 
 		final int number;
 		try {
-			number = Integer.parseInt(reader.readLine());
+			number = reader.read()-'0';
+			System.out.println("Number read: " + number);
 		} catch (NumberFormatException file) {
 			throw new IllegalArgumentException("zu wenig Befehle im TextFile");
 		}
@@ -64,13 +65,13 @@ public class FileDialog implements Dialog {
 
 	@Override
 	public void askForNumber(String player, Parameter para) throws IOException {
-		writer.write("Player " + player.toUpperCase() + ", your choice " + para.toString() + '\n');
+		writer.write("Player " + player.toUpperCase() + ", your choice " + para.toString() + '\r'+'\n');
 		writer.flush();
 	}
 
 	@Override
 	public void endOfRound(int roundsPlayed, int playerAScore, int playerBScore) throws IOException {
-		writer.write("Round " + roundsPlayed + ", Player A: " + playerAScore + ", Player B: " + playerBScore + '\n');
+		writer.write("Round " + roundsPlayed + ", Player A: " + playerAScore + ", Player B: " + playerBScore + '\r'+'\n');
 		writer.flush();
 	}
 
