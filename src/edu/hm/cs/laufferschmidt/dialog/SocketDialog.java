@@ -88,10 +88,8 @@ public class SocketDialog implements Dialog {
 		int result = 0;
 		if (playA) {
 			System.out.println("bereit zu lesen von A");
-//			BufferedReader readerA = new BufferedReader(new InputStreamReader(connectA.getInputStream()));
 			result = readerA.read() - '0';
 		} else {
-//			BufferedReader readerB = new BufferedReader(new InputStreamReader(connectB.getInputStream()));
 			result = readerB.read() - '0';
 		}
 
@@ -102,11 +100,9 @@ public class SocketDialog implements Dialog {
 	@Override
 	public void askForNumber(String player, Parameter para) throws IOException {
 		if (player.toLowerCase().equals("a")) {
-//			BufferedWriter writerA = new BufferedWriter(new OutputStreamWriter(connectA.getOutputStream()));
 			writeTo(writerA, "Player " + player.toUpperCase() + ", your choice " + para.toString() + '\n');
 			playA = true;
 		} else {
-//			BufferedWriter writerB = new BufferedWriter(new OutputStreamWriter(connectB.getOutputStream()));
 			writeTo(writerB,"Player " + player.toUpperCase() + ", your choice " + para.toString() + '\n');
 			playA = false;
 		}
@@ -114,19 +110,15 @@ public class SocketDialog implements Dialog {
 
 	@Override
 	public void endOfRound(int roundsPlayed, int playerAScore, int playerBScore) throws IOException {
-//		BufferedWriter writerA = new BufferedWriter(new OutputStreamWriter(connectA.getOutputStream()));
 		writeTo(writerA, "Round " + roundsPlayed + ", Player A: " + playerAScore + ", Player B: " + playerBScore + '\n');
 
-//		BufferedWriter writerB = new BufferedWriter(new OutputStreamWriter(connectB.getOutputStream()));
 		writeTo(writerB, "Round " + roundsPlayed + ", Player A: " + playerAScore + ", Player B: " + playerBScore + '\n');
 	}
 
 	@Override
 	public void printWinner(String winner) throws IOException {
-//		BufferedWriter writerA = new BufferedWriter(new OutputStreamWriter(connectA.getOutputStream()));
 		writeTo(writerA, winner + '\n');
 		
-//		BufferedWriter writerB = new BufferedWriter(new OutputStreamWriter(connectB.getOutputStream()));
 		writeTo(writerB, winner + '\n');
 	}
 	
