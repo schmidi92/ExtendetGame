@@ -2,25 +2,40 @@ package edu.hm.cs.laufferschmidt.parameters;
 
 import edu.hm.cs.laufferschmidt.Parameter;
 
+/**
+ * Parameterklasse.
+ * Parameter fuer ein schnelles Spiel.
+ * @author Markus Schmidt und Jonas Lauffer
+ *
+ */
 public class QuickParameters implements Parameter {
 
-	private final int SCORETOWIN = 12;
-	private final int MAXCHOICE = 3;
-	private final int MINCHOICE = 1;
+	/**
+	 * Punktezahl, bei der das Spiel gewonnen ist.
+	 */
+	private final int scoreToWin = 12;
+	/**
+	 * Maximaler Wert den ein Spieler auswaehlen kann.
+	 */
+	private final int maxChoice = 3;
+	/**
+	 * Minimaler Wert den ein Spieler auswaehlen kann.
+	 */
+	private final int minChoice = 1;
 
 	@Override
 	public int getScoreToWin() {
-		return SCORETOWIN;
+		return scoreToWin;
 	}
 
 	@Override
 	public int getMaxChoice() {
-		return MAXCHOICE;
+		return maxChoice;
 	}
 
 	@Override
 	public int getMinChoice() {
-		return MINCHOICE;
+		return minChoice;
 	}
 
 	@Override

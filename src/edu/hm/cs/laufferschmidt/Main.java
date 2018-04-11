@@ -5,17 +5,35 @@ import edu.hm.cs.laufferschmidt.dialog.SocketDialog;
 import edu.hm.cs.laufferschmidt.parameters.QuickParameters;
 import edu.hm.cs.laufferschmidt.rules.DrawPotRule;
 import edu.hm.cs.rs.arch.a03_srp.UndercutMono;
-/**
- * Entry point.
- * @param args Commandline args: none.
- * @exception IOException on incomplete input.
- */
 
+/**
+ * Main Klasse, startet das Programm.
+ * @author Markus Schmidt und Jonas Lauffer
+ *
+ */
 public class Main {
+	
+	/**
+	 * Entry point.
+	 * @param args Commandline args: none.
+	 * @exception IOException on incomplete input.
+	 */
 	public static void main(String... args) throws IOException {
-    	Parameter para= new QuickParameters();
-    	Dialog dial=new SocketDialog();
-    	Rule rules =  new DrawPotRule();
+		
+		/**
+		 * Objekt fuer die Spielparameter.
+		 */
+    	final Parameter para= new QuickParameters();
+    	
+    	/**
+    	 * Objekt zur Dialog Fuehrung.
+    	 */
+    	final Dialog dial=new SocketDialog();
+    	
+    	/**
+    	 * Obekt fur die Spielregeln.
+    	 */
+    	final Rule rules =  new DrawPotRule();
         new UndercutMono().play(para,dial,rules);
     }
 
