@@ -21,7 +21,7 @@ public class StandardDialog implements Dialog{
 		//read liest zahl und enter als 2 unterschiedliche Eingaben
 		// enter ('/n') muss ubersprungen werden
 		
-		final BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+		final BufferedReader input = new BufferedReader(new InputStreamReader(System.in, "US-ASCII"));
 		final String line=input.readLine();
 		final int result;
 		if(line == null){

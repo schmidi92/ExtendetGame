@@ -77,11 +77,11 @@ public class SocketDialog implements Dialog {
 			System.out.println("B connected");
 		}
 			
-		readerA = new BufferedReader(new InputStreamReader(connectA.getInputStream()));
-		readerB = new BufferedReader(new InputStreamReader(connectB.getInputStream()));
+		readerA = new BufferedReader(new InputStreamReader(connectA.getInputStream(), "US-ASCII"));
+		readerB = new BufferedReader(new InputStreamReader(connectB.getInputStream(), "US-ASCII"));
 		
-		writerA = new BufferedWriter(new OutputStreamWriter(connectA.getOutputStream()));
-		writerB = new BufferedWriter(new OutputStreamWriter(connectB.getOutputStream()));
+		writerA = new BufferedWriter(new OutputStreamWriter(connectA.getOutputStream(), "US-ASCII"));
+		writerB = new BufferedWriter(new OutputStreamWriter(connectB.getOutputStream(), "US-ASCII"));
 		
 	}
 

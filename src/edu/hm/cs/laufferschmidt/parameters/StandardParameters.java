@@ -32,7 +32,7 @@ public class StandardParameters implements Parameter {
 	public int getMaxChoice() {
 		return MAXCHOICE;
 	}
-
+	@Override
 	public int getMinChoice() {
 		return MINCHOICE;
 	}

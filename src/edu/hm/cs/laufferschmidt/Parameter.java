@@ -29,6 +29,7 @@ public interface Parameter {
 	 * Liefert einen String mit den attributen der Klasse zurueck.
 	 * @return Klassenattribute in String verpackt
 	 */
+	@Override
 	String toString();
 	
 	/**
