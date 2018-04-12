@@ -19,6 +19,10 @@ import edu.hm.cs.laufferschmidt.Parameter;
  *
  */
 public class SocketDialog implements Dialog {
+	/**
+	 * Default fuer char konvertierung.
+	 */
+	private static final String CHARSET = "US-ASCII";
 
 	/**
 	 * Port auf dem Server fuer Spieler A hoert.
@@ -30,14 +34,7 @@ public class SocketDialog implements Dialog {
 	 */
 	private static final  int PORTPLAYERB = 2002;
 	
-//	/**
-//	 * Socket verbunden zu Player A.
-//	 */
-//	private Socket connectA;
-//	/**
-//	 * Socket verbunden zu Player B.
-//	 */
-//	private Socket connectB;
+
 	/**
 	 * Bool ob Player A oder Player B angesprochen wird.
 	 */
@@ -62,6 +59,7 @@ public class SocketDialog implements Dialog {
 	 */
 	private final BufferedWriter writerB;
 	
+	
 	/**
 	 * Konstruktor, akzeptiert eine Verbindung auf Port 2001, anschliessend auf Port 2002.
 	 * @throws IOException SocketException.
@@ -77,11 +75,11 @@ public class SocketDialog implements Dialog {
 			System.out.println("B connected");
 		}
 			
-		readerA = new BufferedReader(new InputStreamReader(connectA.getInputStream(), "US-ASCII"));
-		readerB = new BufferedReader(new InputStreamReader(connectB.getInputStream(), "US-ASCII"));
+		readerA = new BufferedReader(new InputStreamReader(connectA.getInputStream(), CHARSET));
+		readerB = new BufferedReader(new InputStreamReader(connectB.getInputStream(), CHARSET));
 		
-		writerA = new BufferedWriter(new OutputStreamWriter(connectA.getOutputStream(), "US-ASCII"));
-		writerB = new BufferedWriter(new OutputStreamWriter(connectB.getOutputStream(), "US-ASCII"));
+		writerA = new BufferedWriter(new OutputStreamWriter(connectA.getOutputStream(), CHARSET));
+		writerB = new BufferedWriter(new OutputStreamWriter(connectB.getOutputStream(), CHARSET));
 		
 	}
 

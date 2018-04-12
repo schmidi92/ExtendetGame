@@ -16,12 +16,17 @@ import edu.hm.cs.laufferschmidt.Parameter;
  */
 public class StandardDialog implements Dialog{
 	
+	/**
+	 * Default fuer char konvertierung.
+	 */
+	private static final String CHARSET = "US-ASCII";
+	
 	@Override
 	public int getNumber() throws IOException{
 		//read liest zahl und enter als 2 unterschiedliche Eingaben
 		// enter ('/n') muss ubersprungen werden
 		
-		final BufferedReader input = new BufferedReader(new InputStreamReader(System.in, "US-ASCII"));
+		final BufferedReader input = new BufferedReader(new InputStreamReader(System.in, CHARSET));
 		final String line=input.readLine();
 		final int result;
 		if(line == null){

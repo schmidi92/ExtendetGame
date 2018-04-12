@@ -23,15 +23,18 @@ public class StandardParameters implements Parameter {
 	 */
 	private static final int MINCHOICE = 1;
 	
-	@Override
-	public int getScoreToWin() {
-		return SCORETOWIN;
-	}
+
 
 	@Override
 	public int getMaxChoice() {
 		return MAXCHOICE;
 	}
+	
+	@Override
+	public int getScoreToWin() {
+		return SCORETOWIN;
+	}
+	
 	@Override
 	public int getMinChoice() {
 		return MINCHOICE;
