@@ -1,6 +1,5 @@
 package edu.hm.cs.laufferschmidt.rules;
 
-import edu.hm.cs.laufferschmidt.Parameter;
 import edu.hm.cs.laufferschmidt.Rule;
 
 /**
@@ -36,22 +35,9 @@ public class TwoDiffRule implements Rule {
 		 return matchScore;
 	}
 
-	@Override
-	public boolean gameStillrunning(int playerAScore, int playerBScore, Parameter para) {
-		return playerAScore < para.getScoreToWin() && playerBScore < para.getScoreToWin();
-	}
+	
 
-	@Override
-	public String determineWinner(int playerAScore, int playerBScore) {
-		String winner;
-		if (playerAScore == playerBScore)
-			winner = "Tie";
-		else if (playerAScore > playerBScore)
-			winner = "Player A wins";
-		else
-			winner = "Player B wins";
-		return winner;
-	}
+	
 }
 
 

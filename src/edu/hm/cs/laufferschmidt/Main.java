@@ -1,7 +1,7 @@
 package edu.hm.cs.laufferschmidt;
 import java.io.IOException;
 
-import edu.hm.cs.laufferschmidt.dialog.FileDialog;
+import edu.hm.cs.laufferschmidt.dialog.StandardDialog;
 import edu.hm.cs.laufferschmidt.parameters.QuickParameters;
 import edu.hm.cs.laufferschmidt.rules.DrawPotRule;
 import edu.hm.cs.rs.arch.a03_srp.UndercutMono;
@@ -30,7 +30,7 @@ public class Main {
     	/**
     	 * Objekt zur Dialog Fuehrung.
     	 */
-    	final Dialog dial=new FileDialog();
+    	final Dialog dial=new StandardDialog();
     	
     	/**
     	 * Obekt fur die Spielregeln.

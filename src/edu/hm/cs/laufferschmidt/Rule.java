@@ -26,7 +26,9 @@ public interface Rule {
 	 * @param para Parameter obejekt zur abfrage der noetigen Punkte
 	 * @return true spiel lauft weiter, false spiel beendet spieler hat max Punktzahl erreicht
 	 */
-	boolean gameStillrunning(int playerAScore, int playerBScore, Parameter para );
+	default boolean gameStillrunning(int playerAScore, int playerBScore, Parameter para) {
+		return playerAScore < para.getScoreToWin() && playerBScore < para.getScoreToWin();
+	}
 	
 	
 	/**
@@ -36,5 +38,16 @@ public interface Rule {
 	 * @param playerBScore Punktestand Spieler B
 	 * @return Welcher Spieler gewonnen hat, oder unentschieden
 	 */
-	String determineWinner(int playerAScore, int playerBScore);
+	default String determineWinner(int playerAScore, int playerBScore) {
+		String winner;
+		if (playerAScore == playerBScore)
+			winner = "Tie";
+		else if (playerAScore > playerBScore)
+			winner = "Player A wins";
+		else
+			winner = "Player B wins";
+		return winner;
+	}
+	
+	
 }
