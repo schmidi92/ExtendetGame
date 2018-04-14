@@ -1,8 +1,8 @@
 package edu.hm.cs.laufferschmidt;
 import java.io.IOException;
 
-import edu.hm.cs.laufferschmidt.dialog.StandardDialog;
-import edu.hm.cs.laufferschmidt.parameters.StandardParameters;
+import edu.hm.cs.laufferschmidt.dialog.FileDialog;
+import edu.hm.cs.laufferschmidt.parameters.ChaosParameters;
 import edu.hm.cs.laufferschmidt.rules.StandardRule;
 import edu.hm.cs.rs.arch.a03_srp.UndercutMono;
 
@@ -25,12 +25,12 @@ public class Main {
 		/**
 		 * Objekt fuer die Spielparameter.
 		 */
-    	final Parameter para= new StandardParameters();
+    	final Parameter para= new ChaosParameters();
     	
     	/**
     	 * Objekt zur Dialog Fuehrung.
     	 */
-    	final Dialog dial=new StandardDialog();
+    	final Dialog dial=new FileDialog();
     	
     	/**
     	 * Obekt fur die Spielregeln.
