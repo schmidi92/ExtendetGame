@@ -24,6 +24,7 @@ public class StandardRule implements Rule {
 		else if (playerBChoice == playerAChoice - 1) {
 			playerPoints[1] = playerAChoice + playerBChoice;
 			playerPoints[0] = 0;
+			
 		}
 		//beide bekommen ihre Punkte
 
