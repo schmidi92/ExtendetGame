@@ -32,7 +32,7 @@ public class ChaosParameters implements Parameter {
 	/**
 	 * Boolean welcher Spieler an der Reihe ist.
 	 */
-	private boolean playerB = false;
+	private boolean playerB;
 
 	@Override
 	public int getScoreToWin() {
