@@ -16,11 +16,15 @@ public class StandardRule implements Rule {
 		playerPoints[0] = playerAChoice;
 		playerPoints[1] = playerBChoice;
 		//Player A undercut Player b, A bekommt alle Punkte
-		if (playerAChoice == playerBChoice - 1)
+		if (playerAChoice == playerBChoice - 1) {
 			playerPoints[0] = playerAChoice + playerBChoice;
+			playerPoints[1] = 0;
+		}
 		//Player b undercut Player A, b Bekommt alle Punkte
-		else if (playerBChoice == playerAChoice - 1)
+		else if (playerBChoice == playerAChoice - 1) {
 			playerPoints[1] = playerAChoice + playerBChoice;
+			playerPoints[0] = 0;
+		}
 		//beide bekommen ihre Punkte
 
 		return playerPoints;

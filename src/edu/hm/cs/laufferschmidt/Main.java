@@ -2,8 +2,8 @@ package edu.hm.cs.laufferschmidt;
 import java.io.IOException;
 
 import edu.hm.cs.laufferschmidt.dialog.StandardDialog;
-import edu.hm.cs.laufferschmidt.parameters.QuickParameters;
-import edu.hm.cs.laufferschmidt.rules.DrawPotRule;
+import edu.hm.cs.laufferschmidt.parameters.StandardParameters;
+import edu.hm.cs.laufferschmidt.rules.StandardRule;
 import edu.hm.cs.rs.arch.a03_srp.UndercutMono;
 
 
@@ -25,7 +25,7 @@ public class Main {
 		/**
 		 * Objekt fuer die Spielparameter.
 		 */
-    	final Parameter para= new QuickParameters();
+    	final Parameter para= new StandardParameters();
     	
     	/**
     	 * Objekt zur Dialog Fuehrung.
@@ -35,7 +35,7 @@ public class Main {
     	/**
     	 * Obekt fur die Spielregeln.
     	 */
-    	final Rule rules =  new DrawPotRule();
+    	final Rule rules =  new StandardRule();
         new UndercutMono().play(para,dial,rules);
     }
 
