@@ -87,14 +87,21 @@ public class SocketDialog implements Dialog {
 	public int getNumber() throws IOException {
 		int result = 0;
 		if (playA) {
-			System.out.println("bereit zu lesen von A");
 			result = readerA.read() - '0';
 		} else {
 			result = readerB.read() - '0';
 		}
-
+		
 		return result;
 
+	}
+
+	protected boolean isPlayA() {
+		return playA;
+	}
+
+	protected void setPlayA(boolean playA) {
+		this.playA = playA;
 	}
 
 	@Override

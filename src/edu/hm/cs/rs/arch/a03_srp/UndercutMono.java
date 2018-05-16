@@ -6,9 +6,10 @@ package edu.hm.cs.rs.arch.a03_srp; //X
 
 import java.io.IOException;
 
-import edu.hm.cs.lauffer.Dialog;
+import edu.hm.cs.lauffer.*;
 import edu.hm.cs.lauffer.Parameter;
 import edu.hm.cs.lauffer.Rule;
+import edu.hm.cs.lauffer.dialog.ThreadSocketDialog;
 
 /**
  * Monolithic version of Undercut. Violates lots of design principles.
@@ -26,8 +27,9 @@ public class UndercutMono {
      * @param dialog Dialogobjekt wie die Dialogfuehrung funktioniert
      * @param rules Regelobjekt welche Regeln das Spiel hat
      * @exception IOException on incomplete input.
+     * @throws InterruptedException 
      */
-    public void play(Parameter para,Dialog dialog, Rule rules) throws IOException {
+    public void play(Parameter para,Dialog dialog, Rule rules) throws IOException, InterruptedException {
         int playerAScore = 0;
         int playerBScore = 0;
         int roundsPlayed = 0;
@@ -36,24 +38,45 @@ public class UndercutMono {
 
         // loop until a player wins ...
         while(rules.gameStillrunning(playerAScore, playerBScore, para)) {
-            int playerAChoice;
+            int playerAChoice =0;
+
+            int playerBChoice =0;
             // read players' choices; if invalid, discard and retry
             dialog.askForNumber("a", para); // to player A
-            do {
-                playerAChoice = dialog.getNumber();
-                System.out.println("Player A: " +playerAChoice);
-            }
-            while(!para.isValidNumber(playerAChoice));
-
-            int playerBChoice;
-            
             dialog.askForNumber("b", para);  // to player B
+            boolean aa=false;
+            boolean bb = false;
+            ThreadSocketDialog dialog1 = (ThreadSocketDialog) dialog;
+            
             do {
-            	
-            	playerBChoice = dialog.getNumber();
-                System.out.println("Player B: " +playerBChoice);
+            	if(!aa && !bb){
+            		int [] i = dialog1.runAll();
+                    playerAChoice =i[0]; //dialog.getNumber();
+                    playerBChoice =i[1]; //dialog.getNumber();
+            	}
+            	else if(!aa){
+            		playerAChoice = dialog1.askA();
+            	}
+            	else 
+            		playerBChoice = dialog1.askB();
+                
+               
+                aa=para.isValidNumber(playerAChoice);
+                bb=para.isValidNumber(playerBChoice);
+                
+                System.out.println("A:"+aa + ",B:" +bb);
+                
             }
-            while(!para.isValidNumber(playerBChoice));
+            while(!aa||!bb);
+
+            
+           
+//            do {
+//            	
+//            	playerBChoice = dialog.getNumber();
+//                System.out.println("Player B: " +playerBChoice);
+//            }
+//            while(!para.isValidNumber(playerBChoice));
 
             // update scores
             final int [] score = rules.evaluateScores(playerAChoice, playerBChoice);
