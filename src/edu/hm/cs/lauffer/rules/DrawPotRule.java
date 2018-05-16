@@ -1,7 +1,7 @@
-package edu.hm.cs.laufferschmidt.rules;
+package edu.hm.cs.lauffer.rules;
 
-import edu.hm.cs.laufferschmidt.Parameter;
-import edu.hm.cs.laufferschmidt.Rule;
+import edu.hm.cs.lauffer.Parameter;
+import edu.hm.cs.lauffer.Rule;
 /**
  * Klasse fuer neue Spielregeln. Bei Gleichstand werden beide Punktzahlen in einen Topf geworfen
  * und erst beim naechsten undercut dem Gewinner zugeschrieben. Bei dreimaligen Gleichstand hintereinander 

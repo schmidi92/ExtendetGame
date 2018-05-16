@@ -1,6 +1,6 @@
-package edu.hm.cs.laufferschmidt.rules;
+package edu.hm.cs.lauffer.rules;
 
-import edu.hm.cs.laufferschmidt.Rule;
+import edu.hm.cs.lauffer.Rule;
 
 /**
  * Klasse mit Hoffstaedter Undercut Regeln.

@@ -1,4 +1,4 @@
-package edu.hm.cs.laufferschmidt.dialog;
+package edu.hm.cs.lauffer.dialog;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,8 +8,8 @@ import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import edu.hm.cs.laufferschmidt.Dialog;
-import edu.hm.cs.laufferschmidt.Parameter;
+import edu.hm.cs.lauffer.Dialog;
+import edu.hm.cs.lauffer.Parameter;
 
 /**
  * Klasse die die Kommunikation mit den Spielern verwaltet. Dateneingabe und

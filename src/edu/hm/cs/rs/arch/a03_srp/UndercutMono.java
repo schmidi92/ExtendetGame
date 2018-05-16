@@ -6,9 +6,9 @@ package edu.hm.cs.rs.arch.a03_srp; //X
 
 import java.io.IOException;
 
-import edu.hm.cs.laufferschmidt.Dialog;
-import edu.hm.cs.laufferschmidt.Parameter;
-import edu.hm.cs.laufferschmidt.Rule;
+import edu.hm.cs.lauffer.Dialog;
+import edu.hm.cs.lauffer.Parameter;
+import edu.hm.cs.lauffer.Rule;
 
 /**
  * Monolithic version of Undercut. Violates lots of design principles.

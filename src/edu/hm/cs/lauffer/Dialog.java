@@ -1,4 +1,4 @@
-package edu.hm.cs.laufferschmidt;
+package edu.hm.cs.lauffer;
 
 import java.io.IOException;
 

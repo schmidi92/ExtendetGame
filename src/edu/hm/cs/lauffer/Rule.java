@@ -1,4 +1,4 @@
-package edu.hm.cs.laufferschmidt;
+package edu.hm.cs.lauffer;
 
 /**
  * Klasse die das Regelset des Spiels verwaltet.

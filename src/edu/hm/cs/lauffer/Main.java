@@ -1,9 +1,9 @@
-package edu.hm.cs.laufferschmidt;
+package edu.hm.cs.lauffer;
 import java.io.IOException;
 
-import edu.hm.cs.laufferschmidt.dialog.FileDialog;
-import edu.hm.cs.laufferschmidt.parameters.ChaosParameters;
-import edu.hm.cs.laufferschmidt.rules.StandardRule;
+import edu.hm.cs.lauffer.dialog.FileDialog;
+import edu.hm.cs.lauffer.parameters.ChaosParameters;
+import edu.hm.cs.lauffer.rules.StandardRule;
 import edu.hm.cs.rs.arch.a03_srp.UndercutMono;
 
 

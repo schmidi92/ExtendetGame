@@ -1,6 +1,6 @@
-package edu.hm.cs.laufferschmidt.parameters;
+package edu.hm.cs.lauffer.parameters;
 
-import edu.hm.cs.laufferschmidt.Parameter;
+import edu.hm.cs.lauffer.Parameter;
 
 /**
  * Parameterklasse.
