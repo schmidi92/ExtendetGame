@@ -91,7 +91,7 @@ public class SocketDialog implements Dialog {
 		} else {
 			result = readerB.read() - '0';
 		}
-		
+
 		return result;
 
 	}
@@ -100,17 +100,17 @@ public class SocketDialog implements Dialog {
 		return playA;
 	}
 
-	protected void setPlayA(boolean playA) {
+	public void setPlayA(boolean playA) {
 		this.playA = playA;
 	}
 
 	@Override
-	public void askForNumber(String player, Parameter para) throws IOException {
+	public void askForNumber(String player, String playerChoices) throws IOException {
 		if ("a".equalsIgnoreCase(player)) {
-			writeTo(writerA, "Player " + player.toUpperCase() + ", your choice " + para.toString() + '\n');
+			writeTo(writerA, "Player " + player.toUpperCase() + ", your choice " + playerChoices + '\n');
 			playA = true;
 		} else {
-			writeTo(writerB,"Player " + player.toUpperCase() + ", your choice " + para.toString() + '\n');
+			writeTo(writerB,"Player " + player.toUpperCase() + ", your choice " + playerChoices + '\n');
 			playA = false;
 		}
 	}

@@ -31,6 +31,7 @@ public interface Parameter {
 	 */
 	@Override
 	String toString();
+	String toString(boolean playerB);
 	
 	/**
 	 * Prueft ob Benutzereingabe innerhalb des gueltigen Bereichs liegt.
@@ -39,4 +40,5 @@ public interface Parameter {
 	 * @return true Nummer gueltig, false Nummer ausserhalb des gueltigen Bereichs
 	 */
 	boolean isValidNumber(int number);
+	boolean isValidNumber(int number,boolean playerB);
 }

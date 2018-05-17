@@ -23,15 +23,14 @@ public class ThreadSocketDialog extends SocketDialog {
 					System.out.println(value[1] + "b");
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("IOException: " + e);
 			}
 			
 		}
 		
 	}
 	final int[] value = new int[2];
-//	private boolean playerA=false;
+
 
 	private Thread threadA;
 	private Thread threadB;
@@ -50,19 +49,7 @@ public class ThreadSocketDialog extends SocketDialog {
 	}
 
 	public int[] runAll() throws InterruptedException, IOException {
-//		this.playerA=true;
-//		Thread thread1 = new Thread(this);
-//		thread1.start();
-//		Thread.sleep(200);
-//		
-//		ThreadSocketDialog ttt = new ThreadSocketDialog();
-//		Thread thread2 = new Thread(ttt);
-//
-//		thread2.start();
-//		thread1.join();
-//		thread2.join();
-//		value[1]= ttt.value[1];
-//		return value;
+
 		
 		threadA = new Thread(new InnerRun(true) );
 		threadB = new Thread(new InnerRun(false) );

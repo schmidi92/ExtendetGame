@@ -38,8 +38,8 @@ public class StandardDialog implements Dialog{
 		
 	}
 	@Override
-	public void askForNumber(String player,Parameter para){
-		System.out.printf("Player "+player.toUpperCase() +", your choice " + para.toString()+"%n");
+	public void askForNumber(String player,String playerChoices){
+		System.out.printf("Player "+player.toUpperCase() +", your choice " + playerChoices+"%n");
 	}
 	@Override
 	public void endOfRound(int roundsPlayed, int playerAScore, int playerBScore){

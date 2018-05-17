@@ -10,6 +10,7 @@ import edu.hm.cs.lauffer.*;
 import edu.hm.cs.lauffer.Parameter;
 import edu.hm.cs.lauffer.Rule;
 import edu.hm.cs.lauffer.dialog.ThreadSocketDialog;
+import edu.hm.cs.lauffer.parameters.ChaosParameters;
 
 /**
  * Monolithic version of Undercut. Violates lots of design principles.
@@ -39,15 +40,14 @@ public class UndercutMono {
         // loop until a player wins ...
         while(rules.gameStillrunning(playerAScore, playerBScore, para)) {
             int playerAChoice =0;
-
             int playerBChoice =0;
             // read players' choices; if invalid, discard and retry
-            dialog.askForNumber("a", para); // to player A
-            dialog.askForNumber("b", para);  // to player B
+            dialog.askForNumber("a", para.toString(false)); // to player A
+            dialog.askForNumber("b", para.toString(true));  // to player B
             boolean aa=false;
             boolean bb = false;
             ThreadSocketDialog dialog1 = (ThreadSocketDialog) dialog;
-            
+           
             do {
             	if(!aa && !bb){
             		int [] i = dialog1.runAll();
@@ -61,8 +61,8 @@ public class UndercutMono {
             		playerBChoice = dialog1.askB();
                 
                
-                aa=para.isValidNumber(playerAChoice);
-                bb=para.isValidNumber(playerBChoice);
+                aa=para.isValidNumber(playerAChoice,false);
+                bb=para.isValidNumber(playerBChoice,true);
                 
                 System.out.println("A:"+aa + ",B:" +bb);
                 

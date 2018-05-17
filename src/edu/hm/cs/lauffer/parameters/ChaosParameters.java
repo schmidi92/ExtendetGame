@@ -9,7 +9,8 @@ import edu.hm.cs.lauffer.Parameter;
  *
  */
 public class ChaosParameters implements Parameter {
-
+	private boolean bFinished=false;
+	private boolean aFinished=false;
 	/**
 	 * Punktezahl, bei der das Spiel gewonnen ist.
 	 */
@@ -69,9 +70,44 @@ public class ChaosParameters implements Parameter {
 		
 		return isValid;
 	}
+	public boolean isValidNumber(int number,boolean isPlayerB) {
+		playerB=isPlayerB;
+		final int round=playerPosition();
+		boolean isValid = false; // bleibt in der Schleife
+		if (round % PARACOUNT == 2) {
+			isValid = number == para[2][0] || number == para[2][1] || number == para[2][2];
+		} else {
+			isValid = number >= getMinChoice() && number <= getMaxChoice();
+		}
+		if(isValid&&!playerB){
+			aFinished=true;
+		}
+		else if(isValid&&playerB){
+			bFinished=true;
+		}
+		 if (isValid && bFinished&&aFinished) {
+			++instableCount;
+			bFinished=false;
+			aFinished=false;
+		}
+		
+		return isValid;
+	}
 
 	@Override
 	public String toString() {
+		final int round=playerPosition();
+		final String resultString;
+		if (round % PARACOUNT == 2) {
+			resultString = para[2][0] + " / " + para[2][1] + " / " + para[2][2];
+		} else {
+			resultString = getMinChoice() + " - " + getMaxChoice();
+		}
+		return resultString;
+
+	}
+	public String toString(boolean isPlayerB) {
+		playerB=isPlayerB;
 		final int round=playerPosition();
 		final String resultString;
 		if (round % PARACOUNT == 2) {

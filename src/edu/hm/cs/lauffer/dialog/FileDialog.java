@@ -57,8 +57,8 @@ public class FileDialog implements Dialog {
 	}
 
 	@Override
-	public void askForNumber(String player, Parameter para) throws IOException {
-		writer.write("Player " + player.toUpperCase() + ", your choice " + para.toString() + '\r'+'\n');
+	public void askForNumber(String player, String playerChoices) throws IOException {
+		writer.write("Player " + player.toUpperCase() + ", your choice " + playerChoices + '\r'+'\n');
 		writer.flush();
 	}
 

@@ -1,11 +1,9 @@
 package edu.hm.cs.lauffer;
 import java.io.IOException;
 
-import edu.hm.cs.lauffer.dialog.FileDialog;
-import edu.hm.cs.lauffer.dialog.SocketDialog;
 import edu.hm.cs.lauffer.dialog.ThreadSocketDialog;
-import edu.hm.cs.lauffer.parameters.ChaosParameters;
-import edu.hm.cs.lauffer.rules.StandardRule;
+import edu.hm.cs.lauffer.parameters.StandardParameters;
+import edu.hm.cs.lauffer.rules.DrawPotRule;
 import edu.hm.cs.rs.arch.a03_srp.UndercutMono;
 
 
@@ -28,7 +26,7 @@ public class Main {
 		/**
 		 * Objekt fuer die Spielparameter.
 		 */
-    	final Parameter para= new ChaosParameters();
+    	final Parameter para= new StandardParameters();
     	
     	/**
     	 * Objekt zur Dialog Fuehrung.
@@ -38,7 +36,7 @@ public class Main {
     	/**
     	 * Obekt fur die Spielregeln.
     	 */
-    	final Rule rules =  new StandardRule();
+    	final Rule rules =  new TwoDiffRule();
         new UndercutMono().play(para,dial,rules);
     }
 

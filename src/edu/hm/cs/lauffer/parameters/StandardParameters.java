@@ -44,9 +44,17 @@ public class StandardParameters implements Parameter {
 	public boolean isValidNumber(int number) {
 		return number >= getMinChoice() && number <= this.getMaxChoice();
 	}
+	@Override
+	public boolean isValidNumber(int number,boolean playerB) {
+		return isValidNumber(number);
+	}
 
 	@Override
 	public String toString() {
 		return getMinChoice() + " - " + getMaxChoice();
+	}
+	@Override
+	public String toString(boolean playerB) {
+		return toString();
 	}
 }

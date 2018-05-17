@@ -25,7 +25,7 @@ public interface Dialog {
 	 * @param para Parameterobjekt
 	 * @throws IOException Exception
 	 */
-	void askForNumber(String spieler,Parameter para) throws IOException;
+	void askForNumber(String spieler,String playerChoices) throws IOException;
 	
 	/**
 	 * Zeigt beiden Spielern an, dass die Runde zu ende ist.
