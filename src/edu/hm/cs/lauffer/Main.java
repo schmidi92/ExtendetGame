@@ -36,7 +36,7 @@ public class Main {
     	/**
     	 * Obekt fur die Spielregeln.
     	 */
-    	final Rule rules =  new TwoDiffRule();
+    	final Rule rules =  new DrawPotRule();
         new UndercutMono().play(para,dial,rules);
     }
 
