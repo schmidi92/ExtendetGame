@@ -43,31 +43,31 @@ public class UndercutMono {
             // read players' choices; if invalid, discard and retry
             dialog.askForNumber("a", para.toString(false)); // to player A
             dialog.askForNumber("b", para.toString(true));  // to player B
-            boolean aa=false;
-            boolean bb = false;
+            boolean aIsValid=false;
+            boolean bIsValid = false;
             final ThreadSocketDialog dialog1 = (ThreadSocketDialog) dialog;
            
             do {
-            	if(!aa && !bb){
-            		final int [] i = dialog1.runAll();
-                    playerAChoice =i[0]; //dialog.getNumber();
-                    playerBChoice =i[1]; //dialog.getNumber();
-                    aa=para.isValidNumber(playerAChoice,false);
-                    bb=para.isValidNumber(playerBChoice,true);
+            	if(!aIsValid && !bIsValid){
+            		final int [] playerNumbers = dialog1.runAll();
+                    playerAChoice =playerNumbers[0]; //dialog.getNumber();
+                    playerBChoice =playerNumbers[1]; //dialog.getNumber();
+                    aIsValid=para.isValidNumber(playerAChoice,false);
+                    bIsValid=para.isValidNumber(playerBChoice,true);
             	}
-            	else if(!aa){
+            	else if(!aIsValid){
             		playerAChoice = dialog1.askA();
-            		aa=para.isValidNumber(playerAChoice,false);
+            		aIsValid=para.isValidNumber(playerAChoice,false);
             	}
             	else {
             		playerBChoice = dialog1.askB();
-            		bb=para.isValidNumber(playerBChoice,true);
+            		bIsValid=para.isValidNumber(playerBChoice,true);
             	}
                 
-                System.out.println("A:"+aa + playerAChoice + ",B:" +bb + playerBChoice);
+                System.out.println("A:"+aIsValid + playerAChoice + ",B:" +bIsValid + playerBChoice);
                 
             }
-            while(!aa||!bb);
+            while(!aIsValid||!bIsValid);
 
             
            

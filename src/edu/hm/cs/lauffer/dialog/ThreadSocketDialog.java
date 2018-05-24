@@ -10,23 +10,29 @@ import java.io.IOException;
  *
  */
 public class ThreadSocketDialog extends SocketDialog {
+	/**
+	 * return Values.
+	 */
+	private final int[] playerInput = new int[2];
 
+
+	
 	/**
 	 * Innere Threadklasse.
 	 * @author  Markus Schmidt und Jonas Lauffer
 	 *
 	 */
 	class InnerRun implements Runnable{
-
+		//beginning of the nested class
 		/**
 		 * is playerA.
 		 */
-		private boolean playerA;
-		
+		private final boolean playerA;
+		//Kein default Konstruktor
 		/**
 		 * Construktore.
 		 * @param player welcher Spieler
-		 */
+		 */		
 		InnerRun(boolean player){
 			this.playerA = player;
 		}
@@ -34,40 +40,26 @@ public class ThreadSocketDialog extends SocketDialog {
 		public void run() {
 			try {
 				if (playerA) {
-					value[0] =ThreadSocketDialog.this.getAChoice();
+					playerInput[0] =ThreadSocketDialog.this.getAChoice();
 //					ThreadSocketDialog.this.setPlayA(true);
 //					value[0] = ThreadSocketDialog.this.getNumber();
-					System.out.println(value[0]+ "a");
+					System.out.println(playerInput[0]+ "a");
 				} else {
 					
-					value[1] =ThreadSocketDialog.this.getBChoice();
+					playerInput[1] =ThreadSocketDialog.this.getBChoice();
 //					ThreadSocketDialog.this.setPlayA(false);
 //					value[1] = ThreadSocketDialog.this.getNumber();
-					System.out.println(value[1] + "b");
+					System.out.println(playerInput[1] + "b");
 				}
-			} catch (IOException e) {
-				System.out.println("IOException: " + e);
+			} catch (IOException exception) {
+				System.out.println("IOException: " + exception);
 			}
 			
 		}
 		
 	}
 	
-	/**
-	 * return Values.
-	 */
-	private final int[] value = new int[2];
-
-
-	/**
-	 * Thread von spieler A.
-	 */
-	private Thread threadA;
 	
-	/**
-	 * Thread von spieler A.
-	 */
-	private Thread threadB;
 	
 	/**
 	 * Konstruktor.
@@ -106,8 +98,8 @@ public class ThreadSocketDialog extends SocketDialog {
 	public int[] runAll() throws InterruptedException, IOException {
 
 		
-		threadA = new Thread(new InnerRun(true) );
-		threadB = new Thread(new InnerRun(false) );
+		Thread threadA = new Thread(new InnerRun(true) );
+		Thread threadB = new Thread(new InnerRun(false) );
 		
 		threadA.start();
 		threadB.start();
@@ -115,14 +107,16 @@ public class ThreadSocketDialog extends SocketDialog {
 		threadA.join();
 		threadB.join();
 		
-		return value;
+		int[] output = new int[2];
+		System.arraycopy(playerInput, 0, output, 0, playerInput.length);
+		return output;
 
 	}
 
 
 
 	public int[] getValue() {
-		return value;
+		return playerInput;
 	}
 	
 

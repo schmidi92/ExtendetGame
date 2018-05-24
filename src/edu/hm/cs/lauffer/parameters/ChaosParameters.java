@@ -37,12 +37,12 @@ public class ChaosParameters implements Parameter {
 	/**
 	 * Eingabe von b ist richtig.
 	 */
-	private boolean bFinished=false;
+	private boolean bFinished;
 	
 	/**
 	 * Eingabe von a ist finished.
 	 */
-	private boolean aFinished=false;
+	private boolean aFinished;
 	
 
 	@Override
@@ -117,11 +117,12 @@ public class ChaosParameters implements Parameter {
 	
 	
 	private void validating() {
-		if(!playerB){
-			aFinished=true;
-		}
-		else if(playerB){
+		if(playerB){
+			
 			bFinished=true;
+		}
+		else {
+			aFinished=true;
 		}
 		 if ( bFinished&&aFinished) {
 			++instableCount;

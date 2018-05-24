@@ -16,17 +16,17 @@ public class TwoDiffRule implements Rule {
 	public int[] evaluateScores(int playerAChoice,int playerBChoice){
 		final int[] matchScore = new int[2];
 		 if(playerAChoice == playerBChoice - 1)
-			 matchScore[0]=playerAChoice + playerBChoice;
+			 matchScore[0]=(playerAChoice + playerBChoice);
             // PlayerA macht undercut
          else if(playerBChoice == playerAChoice - 1)
-        	 matchScore[1]=playerAChoice + playerBChoice;
+        	 matchScore[1]=(playerAChoice + playerBChoice);
             // playerB macht underCut
          
          else if(playerAChoice == playerBChoice + 2)
-			 matchScore[0]=playerAChoice + playerBChoice;
+			 matchScore[0]=(playerAChoice + playerBChoice);
             //Wenn PlayerA 2 Punkte mehr hat, bekommt er alle Punkte;
          else if(playerBChoice == playerAChoice + 2)
-        	 matchScore[1]=playerAChoice + playerBChoice;
+        	 matchScore[1]=(playerAChoice + playerBChoice);
 		 //Wenn PlayerB 2 Punkte mehr hat, bekommt er alle Punkte;
          else {
         	 matchScore[0]=playerAChoice;
