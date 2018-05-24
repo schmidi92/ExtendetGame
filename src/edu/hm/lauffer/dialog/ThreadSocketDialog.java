@@ -22,7 +22,7 @@ public class ThreadSocketDialog extends SocketDialog {
 	 * @author  Markus Schmidt und Jonas Lauffer
 	 *
 	 */
-	class InnerRun implements Runnable{
+	/* default */class InnerRun implements Runnable{
 		//beginning of the nested class
 		/**
 		 * is playerA.
@@ -33,7 +33,7 @@ public class ThreadSocketDialog extends SocketDialog {
 		 * Construktore.
 		 * @param player welcher Spieler
 		 */		
-		InnerRun(boolean player){
+		/* default */InnerRun(boolean player){
 			this.playerA = player;
 		}
 		@Override

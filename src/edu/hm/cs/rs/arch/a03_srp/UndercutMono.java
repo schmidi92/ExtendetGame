@@ -13,86 +13,99 @@ import edu.hm.lauffer.dialog.ThreadSocketDialog;
 
 /**
  * Monolithic version of Undercut. Violates lots of design principles.
+ * 
  * @author R. Schiedermeier, rs@cs.hm.edu
  * @version 2018-03-30
- * @see <a href="http://www.ams.org/publicoutreach/msamhome/96-undercut-index.html">Undercut</a>
+ * @see <a href=
+ *      "http://www.ams.org/publicoutreach/msamhome/96-undercut-index.html">Undercut</a>
  */
 public class UndercutMono {
-    
 
-    /**
-     * Runs an Undercut game.
-     * Gets input from System.in, prints output to System.out.
-     * @param para Parameterobjekt welche Parameter das Spiel verwendet
-     * @param dialog Dialogobjekt wie die Dialogfuehrung funktioniert
-     * @param rules Regelobjekt welche Regeln das Spiel hat
-     * @exception IOException on incomplete input.
-     * @throws InterruptedException 
-     */
-    public void play(Parameter para,Dialog dialog, Rule rules) throws IOException, InterruptedException {
-        int playerAScore = 0;
-        int playerBScore = 0;
-        int roundsPlayed = 0;
+	/**
+	 * Runs an Undercut game. Gets input from System.in, prints output to
+	 * System.out.
+	 * 
+	 * @param para
+	 *            Parameterobjekt welche Parameter das Spiel verwendet
+	 * @param dialog
+	 *            Dialogobjekt wie die Dialogfuehrung funktioniert
+	 * @param rules
+	 *            Regelobjekt welche Regeln das Spiel hat
+	 * @exception IOException
+	 *                on incomplete input.
+	 * @throws InterruptedException Exception
+	 */
+	public void play(Parameter para, Dialog dialog, Rule rules) throws IOException, InterruptedException {
+		int playerAScore = 0;
+		int playerBScore = 0;
+		int roundsPlayed = 0;
 
-        System.out.printf("Undercut start%n"); // initial message to both players
+		System.out.printf("Undercut start%n"); // initial message to both players
 
-        // loop until a player wins ...
-        while(rules.gameStillrunning(playerAScore, playerBScore, para)) {
-            int playerAChoice =0;
-            int playerBChoice =0;
-            // read players' choices; if invalid, discard and retry
-            dialog.askForNumber("a", para.toString(false)); // to player A
-            dialog.askForNumber("b", para.toString(true));  // to player B
-            boolean aNotValid = true;
-            boolean bNotValid = true;
-            final ThreadSocketDialog dialog1 = (ThreadSocketDialog) dialog;
-           
-            do {
-            	if(aNotValid && bNotValid){
-            		final int [] playerNumbers = dialog1.runAll();
-                    playerAChoice =playerNumbers[0]; //dialog.getNumber();
-                    playerBChoice =playerNumbers[1]; //dialog.getNumber();
-                    aNotValid=!para.isValidNumber(playerAChoice,false);
-                    bNotValid=!para.isValidNumber(playerBChoice,true);
-            	}
-            	else if(aNotValid){
-            		playerAChoice = dialog1.askA();
-            		aNotValid=!para.isValidNumber(playerAChoice,false);
-            	}
-            	else {
-            		playerBChoice = dialog1.askB();
-            		bNotValid=!para.isValidNumber(playerBChoice,true);
-            	}
-                
-                System.out.println("A:"+aNotValid + playerAChoice + ",B:" +bNotValid + playerBChoice);
-                
-            }
-            while(aNotValid||bNotValid);
+		// loop until a player wins ...
+		while (rules.gameStillrunning(playerAScore, playerBScore, para)) {
+			// read players' choices; if invalid, discard and retry
+			dialog.askForNumber("a", para.toString(false)); // to player A
+			dialog.askForNumber("b", para.toString(true)); // to player B
+			
+			final int[] playerChoices = requestRightInput(dialog, para);
 
-            
-           
-//            do {
-//            	
-//            	playerBChoice = dialog.getNumber();
-//                System.out.println("Player B: " +playerBChoice);
-//            }
-//            while(!para.isValidNumber(playerBChoice));
+			// do {
+			//
+			// playerBChoice = dialog.getNumber();
+			// System.out.println("Player B: " +playerBChoice);
+			// }
+			// while(!para.isValidNumber(playerBChoice));
 
-            // update scores
-            final int [] score = rules.evaluateScores(playerAChoice, playerBChoice);
-          	playerAScore+=score[0];
-          	playerBScore+=score[1];
-          	roundsPlayed++;
+			// update scores
+			final int[] score = rules.evaluateScores(playerChoices[0], playerChoices[1]);
+			playerAScore += score[0];
+			playerBScore += score[1];
+			roundsPlayed++;
 
+			// publish scores to both players
+			dialog.endOfRound(roundsPlayed, playerAScore, playerBScore);
+		}
 
-            // publish scores to both players
-            dialog.endOfRound(roundsPlayed, playerAScore, playerBScore);
-        }
+		// announce final results to both players
+		dialog.printWinner(rules.determineWinner(playerAScore, playerBScore));
+	}
 
-        // announce final results to both players
-        dialog.printWinner(rules.determineWinner(playerAScore, playerBScore));
-    }
-    
-    int[] requestRightInput()
+	/**
+	 * Wartet auf richtigen Input von beiden Spielern.
+	 * @param dialog dialogKlasse
+	 * @param para paraKlasse
+	 * @return Int[] mit Eingabe der Spieler
+	 * @throws InterruptedException ex
+	 * @throws IOException ex
+	 */
+	private int[] requestRightInput(Dialog dialog, Parameter para) throws InterruptedException, IOException {
+		final int[] playerChoices = new int[2];
+		boolean aNotValid = true;
+		boolean bNotValid = true;
+		final ThreadSocketDialog dialog1 = (ThreadSocketDialog) dialog;
+
+		do {
+			if (aNotValid && bNotValid) {
+				final int[] playerNumbers = dialog1.runAll();
+				playerChoices[0] = playerNumbers[0]; // dialog.getNumber();
+				playerChoices[1] = playerNumbers[1]; // dialog.getNumber();
+				aNotValid = !para.isValidNumber(playerChoices[0] , false);
+				bNotValid = !para.isValidNumber(playerChoices[1], true);
+			} else if (aNotValid) {
+				playerChoices[0]  = dialog1.askA();
+				aNotValid = !para.isValidNumber(playerChoices[0] , false);
+			} else {
+				playerChoices[1] = dialog1.askB();
+				bNotValid = !para.isValidNumber(playerChoices[1], true);
+			}
+
+			System.out.println("A:" + aNotValid + playerChoices[0] + ",B:" + bNotValid + playerChoices[1]);
+
+		} while (aNotValid || bNotValid);
+		
+		return playerChoices;
+	}
+	
 
 }
