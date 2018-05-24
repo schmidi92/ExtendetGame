@@ -29,24 +29,27 @@ public class QuickParameters implements Parameter {
 	}
 
 	@Override
+	public boolean isValidNumber(int number,boolean playerB) {
+		return isValidNumber(number);
+	}
+	
+	@Override
 	public int getMaxChoice() {
 		return MAXCHOICE;
 	}
 
-	@Override
-	public int getMinChoice() {
-		return MINCHOICE;
-	}
 
 	@Override
 	public boolean isValidNumber(int number) {
 		return number >= getMinChoice() && number <= this.getMaxChoice();
 	}
-	@Override
-	public boolean isValidNumber(int number,boolean playerB) {
-		return isValidNumber(number);
-	}
 
+
+	@Override
+	public int getMinChoice() {
+		return MINCHOICE;
+	}
+	
 	@Override
 	public String toString() {
 		return getMinChoice() + " - " + getMaxChoice();
