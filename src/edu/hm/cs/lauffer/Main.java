@@ -2,7 +2,7 @@ package edu.hm.cs.lauffer;
 import java.io.IOException;
 
 import edu.hm.cs.lauffer.dialog.ThreadSocketDialog;
-import edu.hm.cs.lauffer.parameters.StandardParameters;
+import edu.hm.cs.lauffer.parameters.ChaosParameters;
 import edu.hm.cs.lauffer.rules.DrawPotRule;
 import edu.hm.cs.rs.arch.a03_srp.UndercutMono;
 
@@ -26,7 +26,7 @@ public class Main {
 		/**
 		 * Objekt fuer die Spielparameter.
 		 */
-    	final Parameter para= new StandardParameters();
+    	final Parameter para= new ChaosParameters();
     	
     	/**
     	 * Objekt zur Dialog Fuehrung.

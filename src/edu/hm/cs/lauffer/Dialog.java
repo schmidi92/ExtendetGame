@@ -22,7 +22,7 @@ public interface Dialog {
 	 * Mit welcher Zahl der Benutzer die Runde spielen moechte.
 	 * 
 	 * @param spieler Spieler a oder b
-	 * @param para Parameterobjekt
+	 * @param playerChoices string Auswahl die an den Spiler gesendet wird
 	 * @throws IOException Exception
 	 */
 	void askForNumber(String spieler,String playerChoices) throws IOException;

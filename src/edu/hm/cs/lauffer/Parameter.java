@@ -31,6 +31,12 @@ public interface Parameter {
 	 */
 	@Override
 	String toString();
+	
+	/**
+	 * Liefert einen String mit den attributen der Klasse zurueck.
+	 * @param playerB ist spielerB an der Reihe
+	 * @return Klassenattribute in String verpackt
+	 */
 	String toString(boolean playerB);
 	
 	/**
@@ -40,5 +46,13 @@ public interface Parameter {
 	 * @return true Nummer gueltig, false Nummer ausserhalb des gueltigen Bereichs
 	 */
 	boolean isValidNumber(int number);
+	
+	/**
+	 * Prueft ob Benutzereingabe innerhalb des gueltigen Bereichs liegt.
+	 * 
+	 * @param number die zu pruefenden Nummer.
+	 * @param playerB ist playerB an der Reihe.
+	 * @return true Nummer gueltig, false Nummer ausserhalb des gueltigen Bereichs
+	 */
 	boolean isValidNumber(int number,boolean playerB);
 }

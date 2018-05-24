@@ -9,7 +9,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import edu.hm.cs.lauffer.Dialog;
-import edu.hm.cs.lauffer.Parameter;
 
 /**
  * Klasse die die Kommunikation mit den Spielern verwaltet. Dateneingabe und
@@ -138,5 +137,22 @@ public class SocketDialog implements Dialog {
 	private void writeTo(BufferedWriter writer, String message) throws IOException{
 		writer.write(message);
 		writer.flush();
+	}
+	/**
+	 * Hollt sich Wert von A. Fuer Threads.
+	 * @return Wert von a
+	 * @throws IOException read exception
+	 */
+	protected int getAChoice() throws IOException {
+		return readerA.read() - '0';
+	}
+	
+	/**
+	 * Hollt sich Wert von B. Fuer Threads
+	 * @return Wert von a
+	 * @throws IOException read exception
+	 */
+	protected int getBChoice() throws IOException {
+		return readerB.read() - '0';
 	}
 }

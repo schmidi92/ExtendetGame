@@ -6,11 +6,10 @@ package edu.hm.cs.rs.arch.a03_srp; //X
 
 import java.io.IOException;
 
-import edu.hm.cs.lauffer.*;
+import edu.hm.cs.lauffer.Dialog;
 import edu.hm.cs.lauffer.Parameter;
 import edu.hm.cs.lauffer.Rule;
 import edu.hm.cs.lauffer.dialog.ThreadSocketDialog;
-import edu.hm.cs.lauffer.parameters.ChaosParameters;
 
 /**
  * Monolithic version of Undercut. Violates lots of design principles.
@@ -46,25 +45,26 @@ public class UndercutMono {
             dialog.askForNumber("b", para.toString(true));  // to player B
             boolean aa=false;
             boolean bb = false;
-            ThreadSocketDialog dialog1 = (ThreadSocketDialog) dialog;
+            final ThreadSocketDialog dialog1 = (ThreadSocketDialog) dialog;
            
             do {
             	if(!aa && !bb){
-            		int [] i = dialog1.runAll();
+            		final int [] i = dialog1.runAll();
                     playerAChoice =i[0]; //dialog.getNumber();
                     playerBChoice =i[1]; //dialog.getNumber();
+                    aa=para.isValidNumber(playerAChoice,false);
+                    bb=para.isValidNumber(playerBChoice,true);
             	}
             	else if(!aa){
             		playerAChoice = dialog1.askA();
+            		aa=para.isValidNumber(playerAChoice,false);
             	}
-            	else 
+            	else {
             		playerBChoice = dialog1.askB();
+            		bb=para.isValidNumber(playerBChoice,true);
+            	}
                 
-               
-                aa=para.isValidNumber(playerAChoice,false);
-                bb=para.isValidNumber(playerBChoice,true);
-                
-                System.out.println("A:"+aa + ",B:" +bb);
+                System.out.println("A:"+aa + playerAChoice + ",B:" +bb + playerBChoice);
                 
             }
             while(!aa||!bb);

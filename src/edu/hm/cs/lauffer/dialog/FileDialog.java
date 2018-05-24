@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import edu.hm.cs.lauffer.Dialog;
-import edu.hm.cs.lauffer.Parameter;
 
 /**
  * Klasse die die Kommunikation mit den Spielern verwaltet. Dateneingabe und

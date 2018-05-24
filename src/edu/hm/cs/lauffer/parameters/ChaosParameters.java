@@ -9,8 +9,7 @@ import edu.hm.cs.lauffer.Parameter;
  *
  */
 public class ChaosParameters implements Parameter {
-	private boolean bFinished=false;
-	private boolean aFinished=false;
+
 	/**
 	 * Punktezahl, bei der das Spiel gewonnen ist.
 	 */
@@ -34,6 +33,17 @@ public class ChaosParameters implements Parameter {
 	 * Boolean welcher Spieler an der Reihe ist.
 	 */
 	private boolean playerB;
+	
+	/**
+	 * Eingabe von b ist richtig.
+	 */
+	private boolean bFinished=false;
+	
+	/**
+	 * Eingabe von a ist finished.
+	 */
+	private boolean aFinished=false;
+	
 
 	@Override
 	public int getScoreToWin() {
@@ -70,29 +80,56 @@ public class ChaosParameters implements Parameter {
 		
 		return isValid;
 	}
+	
+	@Override
 	public boolean isValidNumber(int number,boolean isPlayerB) {
 		playerB=isPlayerB;
 		final int round=playerPosition();
+		System.out.println(round + " isPlayerB: " + isPlayerB);
 		boolean isValid = false; // bleibt in der Schleife
 		if (round % PARACOUNT == 2) {
 			isValid = number == para[2][0] || number == para[2][1] || number == para[2][2];
 		} else {
 			isValid = number >= getMinChoice() && number <= getMaxChoice();
 		}
-		if(isValid&&!playerB){
+		
+//		if(isValid&&!playerB) {
+//			aFinished = true;
+//		}
+//		else if(isValid&&playerB) {
+//			bFinished = true;
+//		}
+//		if(isValid && bFinished && aFinished) {
+//			++instableCount;
+//			bFinished = false;
+//			aFinished = false;
+//		}
+		if(isValid) {
+			validating();
+	}
+		return isValid;
+	}
+	
+	
+	/**
+	 * Hilfsmethode zum aktuallisieren der Runde.
+	 */
+	
+	
+	private void validating() {
+		if(!playerB){
 			aFinished=true;
 		}
-		else if(isValid&&playerB){
+		else if(playerB){
 			bFinished=true;
 		}
-		 if (isValid && bFinished&&aFinished) {
+		 if ( bFinished&&aFinished) {
 			++instableCount;
 			bFinished=false;
 			aFinished=false;
 		}
-		
-		return isValid;
 	}
+	
 
 	@Override
 	public String toString() {
@@ -106,16 +143,11 @@ public class ChaosParameters implements Parameter {
 		return resultString;
 
 	}
+	
+	@Override
 	public String toString(boolean isPlayerB) {
 		playerB=isPlayerB;
-		final int round=playerPosition();
-		final String resultString;
-		if (round % PARACOUNT == 2) {
-			resultString = para[2][0] + " / " + para[2][1] + " / " + para[2][2];
-		} else {
-			resultString = getMinChoice() + " - " + getMaxChoice();
-		}
-		return resultString;
+		return toString();
 
 	}
 	/**
@@ -129,4 +161,5 @@ public class ChaosParameters implements Parameter {
 		}
 		return result;
 	}
+	
 }

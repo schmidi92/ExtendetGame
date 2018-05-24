@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import edu.hm.cs.lauffer.Dialog;
-import edu.hm.cs.lauffer.Parameter;
 
 /**
  * Klasse die die Kommunikation mit den Spielern verwaltet. Dateneingabe und

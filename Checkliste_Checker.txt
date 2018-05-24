@@ -1,7 +1,7 @@
-Errorprone: OK
-PMD: OK
-Simian: OK
+Errorprone: 
+PMD: 
+Simian: 
 UnzipJava: 
 Checkstyle: OK
 Compile: 
-Sportbugs:OK
+Sportbugs:
