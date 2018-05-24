@@ -1,7 +1,7 @@
-package edu.hm.cs.lauffer.rules;
+package edu.hm.lauffer.rules;
 
-import edu.hm.cs.lauffer.Parameter;
-import edu.hm.cs.lauffer.Rule;
+import edu.hm.lauffer.Parameter;
+import edu.hm.lauffer.Rule;
 /**
  * Klasse fuer neue Spielregeln. Bei Gleichstand werden beide Punktzahlen in einen Topf geworfen
  * und erst beim naechsten undercut dem Gewinner zugeschrieben. Bei dreimaligen Gleichstand hintereinander 
@@ -72,7 +72,7 @@ public class DrawPotRule implements Rule {
 
 	@Override
 	public String determineWinner(int playerAScore, int playerBScore) {
-		String winner;
+		final String winner;
 		//Spiel ist Unentschieden, da drei Gleichstaende hintereinander waren
 		if (consecutiveDraw == DRAWTHRESHOLD || playerAScore == playerBScore){
 			winner = "Tie";}

@@ -1,4 +1,4 @@
-package edu.hm.cs.lauffer;
+package edu.hm.lauffer;
 
 /**
  * Klasse die das Regelset des Spiels verwaltet.
@@ -39,7 +39,7 @@ public interface Rule {
 	 * @return Welcher Spieler gewonnen hat, oder unentschieden
 	 */
 	default String determineWinner(int playerAScore, int playerBScore) {
-		String winner;
+		final String winner;
 		if (playerAScore == playerBScore){
 			winner = "Tie";}
 		else if (playerAScore > playerBScore){

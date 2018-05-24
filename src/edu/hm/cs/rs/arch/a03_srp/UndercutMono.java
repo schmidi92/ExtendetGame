@@ -6,10 +6,10 @@ package edu.hm.cs.rs.arch.a03_srp; //X
 
 import java.io.IOException;
 
-import edu.hm.cs.lauffer.Dialog;
-import edu.hm.cs.lauffer.Parameter;
-import edu.hm.cs.lauffer.Rule;
-import edu.hm.cs.lauffer.dialog.ThreadSocketDialog;
+import edu.hm.lauffer.Dialog;
+import edu.hm.lauffer.Parameter;
+import edu.hm.lauffer.Rule;
+import edu.hm.lauffer.dialog.ThreadSocketDialog;
 
 /**
  * Monolithic version of Undercut. Violates lots of design principles.
@@ -43,31 +43,31 @@ public class UndercutMono {
             // read players' choices; if invalid, discard and retry
             dialog.askForNumber("a", para.toString(false)); // to player A
             dialog.askForNumber("b", para.toString(true));  // to player B
-            boolean aIsValid=false;
-            boolean bIsValid = false;
+            boolean aNotValid = true;
+            boolean bNotValid = true;
             final ThreadSocketDialog dialog1 = (ThreadSocketDialog) dialog;
            
             do {
-            	if(!aIsValid && !bIsValid){
+            	if(aNotValid && bNotValid){
             		final int [] playerNumbers = dialog1.runAll();
                     playerAChoice =playerNumbers[0]; //dialog.getNumber();
                     playerBChoice =playerNumbers[1]; //dialog.getNumber();
-                    aIsValid=para.isValidNumber(playerAChoice,false);
-                    bIsValid=para.isValidNumber(playerBChoice,true);
+                    aNotValid=!para.isValidNumber(playerAChoice,false);
+                    bNotValid=!para.isValidNumber(playerBChoice,true);
             	}
-            	else if(!aIsValid){
+            	else if(aNotValid){
             		playerAChoice = dialog1.askA();
-            		aIsValid=para.isValidNumber(playerAChoice,false);
+            		aNotValid=!para.isValidNumber(playerAChoice,false);
             	}
             	else {
             		playerBChoice = dialog1.askB();
-            		bIsValid=para.isValidNumber(playerBChoice,true);
+            		bNotValid=!para.isValidNumber(playerBChoice,true);
             	}
                 
-                System.out.println("A:"+aIsValid + playerAChoice + ",B:" +bIsValid + playerBChoice);
+                System.out.println("A:"+aNotValid + playerAChoice + ",B:" +bNotValid + playerBChoice);
                 
             }
-            while(!aIsValid||!bIsValid);
+            while(aNotValid||bNotValid);
 
             
            
@@ -92,5 +92,7 @@ public class UndercutMono {
         // announce final results to both players
         dialog.printWinner(rules.determineWinner(playerAScore, playerBScore));
     }
+    
+    int[] requestRightInput()
 
 }

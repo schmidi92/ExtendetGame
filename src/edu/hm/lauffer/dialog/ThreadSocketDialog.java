@@ -1,4 +1,4 @@
-package edu.hm.cs.lauffer.dialog;
+package edu.hm.lauffer.dialog;
 
 import java.io.IOException;
 
@@ -98,8 +98,8 @@ public class ThreadSocketDialog extends SocketDialog {
 	public int[] runAll() throws InterruptedException, IOException {
 
 		
-		Thread threadA = new Thread(new InnerRun(true) );
-		Thread threadB = new Thread(new InnerRun(false) );
+		final Thread threadA = new Thread(new InnerRun(true) );
+		final Thread threadB = new Thread(new InnerRun(false) );
 		
 		threadA.start();
 		threadB.start();
@@ -107,17 +107,19 @@ public class ThreadSocketDialog extends SocketDialog {
 		threadA.join();
 		threadB.join();
 		
-		int[] output = new int[2];
+		final int[] output = new int[2];
 		System.arraycopy(playerInput, 0, output, 0, playerInput.length);
 		return output;
 
 	}
 
 
-
-	public int[] getValue() {
-		return playerInput;
-	}
+//	public int[] getPlayerInput() {
+//		
+//		final int[] output = new int[2];
+//		System.arraycopy(playerInput, 0, output, 0, playerInput.length);
+//		return output;
+//	}
 	
 
 }

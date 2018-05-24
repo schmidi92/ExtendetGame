@@ -1,4 +1,4 @@
-package edu.hm.cs.lauffer;
+package edu.hm.lauffer;
 
 /**
  * Klasse die die Parameter des Spiels verwwaltet.

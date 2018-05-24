@@ -1,4 +1,4 @@
-package edu.hm.cs.lauffer.dialog;
+package edu.hm.lauffer.dialog;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import edu.hm.cs.lauffer.Dialog;
+import edu.hm.lauffer.Dialog;
 
 /**
  * Klasse die die Kommunikation mit den Spielern verwaltet. Dateneingabe und

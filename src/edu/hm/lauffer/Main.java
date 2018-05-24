@@ -1,10 +1,10 @@
-package edu.hm.cs.lauffer;
+package edu.hm.lauffer;
 import java.io.IOException;
 
-import edu.hm.cs.lauffer.dialog.ThreadSocketDialog;
-import edu.hm.cs.lauffer.parameters.ChaosParameters;
-import edu.hm.cs.lauffer.rules.DrawPotRule;
 import edu.hm.cs.rs.arch.a03_srp.UndercutMono;
+import edu.hm.lauffer.dialog.ThreadSocketDialog;
+import edu.hm.lauffer.parameters.ChaosParameters;
+import edu.hm.lauffer.rules.DrawPotRule;
 
 
 /**
