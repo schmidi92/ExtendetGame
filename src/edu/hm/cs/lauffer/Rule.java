@@ -40,12 +40,12 @@ public interface Rule {
 	 */
 	default String determineWinner(int playerAScore, int playerBScore) {
 		String winner;
-		if (playerAScore == playerBScore)
-			winner = "Tie";
-		else if (playerAScore > playerBScore)
-			winner = "Player A wins";
-		else
-			winner = "Player B wins";
+		if (playerAScore == playerBScore){
+			winner = "Tie";}
+		else if (playerAScore > playerBScore){
+			winner = "Player A wins";}
+		else{
+			winner = "Player B wins";}
 		return winner;
 	}
 	

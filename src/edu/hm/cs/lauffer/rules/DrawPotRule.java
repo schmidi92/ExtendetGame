@@ -74,12 +74,12 @@ public class DrawPotRule implements Rule {
 	public String determineWinner(int playerAScore, int playerBScore) {
 		String winner;
 		//Spiel ist Unentschieden, da drei Gleichstaende hintereinander waren
-		if (consecutiveDraw == DRAWTHRESHOLD || playerAScore == playerBScore)
-			winner = "Tie";
-		else if (playerAScore > playerBScore)
-			winner = "Player A wins";
-		else
-			winner = "Player B wins";
+		if (consecutiveDraw == DRAWTHRESHOLD || playerAScore == playerBScore){
+			winner = "Tie";}
+		else if (playerAScore > playerBScore){
+			winner = "Player A wins";}
+		else{
+			winner = "Player B wins";}
 		return winner;
 	}
 }
