@@ -15,7 +15,7 @@ public interface Dialog {
 	 * @return int Wert den Benutzer eingegeben hat
 	 * @throws IOException Einlesen nicht moeglich
 	 */
-	int getNumber() throws IOException;
+	int getNumber(boolean playerA, String playerChoice) throws IOException;
 	
 	/**
 	 * Fordert den Spieler auf eine Eingabe zu machen. 
@@ -45,4 +45,10 @@ public interface Dialog {
 	 * @throws IOException 
 	 */
 	void printWinner(String winner) throws IOException;
+	default int[] runAll(String playerAChoice, String playerBChoice) throws IOException{
+		int[] result = new int[2];
+		result[0] = getNumber(true, playerAChoice);
+		result[1] = getNumber(false, playerBChoice);
+		return result;
+	}
 }
