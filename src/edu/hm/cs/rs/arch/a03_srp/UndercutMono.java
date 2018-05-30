@@ -9,7 +9,6 @@ import java.io.IOException;
 import edu.hm.lauffer.Dialog;
 import edu.hm.lauffer.Parameter;
 import edu.hm.lauffer.Rule;
-import edu.hm.lauffer.dialog.ThreadSocketDialog;
 
 /**
  * Monolithic version of Undercut. Violates lots of design principles.
@@ -45,8 +44,8 @@ public class UndercutMono {
 		// loop until a player wins ...
 		while (rules.gameStillrunning(playerAScore, playerBScore, para)) {
 			// read players' choices; if invalid, discard and retry
-			dialog.askForNumber("a", para.toString(false)); // to player A
-			dialog.askForNumber("b", para.toString(true)); // to player B
+//			dialog.askForNumber("a", para.toString(false)); // to player A
+//			dialog.askForNumber("b", para.toString(true)); // to player B
 			
 			final int[] playerChoices = requestRightInput(dialog, para);
 
@@ -83,20 +82,20 @@ public class UndercutMono {
 		final int[] playerChoices = new int[2];
 		boolean aNotValid = true;
 		boolean bNotValid = true;
-		final ThreadSocketDialog dialog1 = (ThreadSocketDialog) dialog;
+//		final ThreadSocketDialog dialog1 = (ThreadSocketDialog) dialog;
 
 		do {
 			if (aNotValid && bNotValid) {
-				final int[] playerNumbers = dialog1.runAll();
+				final int[] playerNumbers = dialog.runAll(para.toString(false), para.toString(true));
 				playerChoices[0] = playerNumbers[0]; // dialog.getNumber();
 				playerChoices[1] = playerNumbers[1]; // dialog.getNumber();
 				aNotValid = !para.isValidNumber(playerChoices[0] , false);
 				bNotValid = !para.isValidNumber(playerChoices[1], true);
 			} else if (aNotValid) {
-				playerChoices[0]  = dialog1.askA();
+				playerChoices[0]  = dialog.getNumber(true, para.toString(false));
 				aNotValid = !para.isValidNumber(playerChoices[0] , false);
 			} else {
-				playerChoices[1] = dialog1.askB();
+				playerChoices[1] = dialog.getNumber(false, para.toString(true));
 				bNotValid = !para.isValidNumber(playerChoices[1], true);
 			}
 

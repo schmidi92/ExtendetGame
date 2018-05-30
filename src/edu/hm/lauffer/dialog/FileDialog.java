@@ -40,8 +40,13 @@ public class FileDialog implements Dialog {
 	}
 
 	@Override
-	public int getNumber() throws IOException {
-
+	public int getNumber(boolean playerA, String playerChoices) throws IOException {
+		if(playerA) {
+			askForNumber("a", playerChoices);
+		} else {
+			askForNumber("b", playerChoices);
+		}
+		
 		final int number;
 		try {
 			number = reader.read()-'0';

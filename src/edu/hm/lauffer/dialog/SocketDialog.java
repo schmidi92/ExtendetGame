@@ -83,11 +83,13 @@ public class SocketDialog implements Dialog {
 	}
 
 	@Override
-	public int getNumber() throws IOException {
+	public int getNumber(boolean playerA, String playerChoices) throws IOException {
 		int result = 0;
-		if (playA) {
+		if(playerA) {
+			askForNumber("a", playerChoices);
 			result = readerA.read() - '0';
 		} else {
+			askForNumber("b", playerChoices);
 			result = readerB.read() - '0';
 		}
 

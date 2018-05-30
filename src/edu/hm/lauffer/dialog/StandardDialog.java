@@ -21,10 +21,14 @@ public class StandardDialog implements Dialog{
 	private static final String CHARSET = "US-ASCII";
 	
 	@Override
-	public int getNumber() throws IOException{
+	public int getNumber(boolean playerA, String playerChoices) throws IOException{
 		//read liest zahl und enter als 2 unterschiedliche Eingaben
 		// enter ('/n') muss ubersprungen werden
-		
+		if(playerA) {
+			askForNumber("a", playerChoices);
+		} else {
+			askForNumber("b", playerChoices);
+		}
 		final BufferedReader input = new BufferedReader(new InputStreamReader(System.in, CHARSET));
 		final String line=input.readLine();
 		final int result;

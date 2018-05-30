@@ -69,43 +69,45 @@ public class ThreadSocketDialog extends SocketDialog {
 		super();
 	}
 
-	/**
-	 * PlayerA fragen.
-	 * @return die Nummer die PlayerA eingegeben hat.
-	 * @throws IOException weil halt Exception
-	 */
-	public int askA() throws IOException {
-		setPlayA(true);
-		return getNumber();
-	}
+//	/**
+//	 * PlayerA fragen.
+//	 * @return die Nummer die PlayerA eingegeben hat.
+//	 * @throws IOException weil halt Exception
+//	 */
+//	
+//	public int askA() throws IOException {
+//		setPlayA(true);
+//		return getNumber();
+//	}
+//
+//	/**
+//	 * PlayerB fragen.
+//	 * @return die Nummer die PlayerB eingegeben hat.
+//	 * @throws IOException weil halt Exception
+//	 */
+//	public int askB() throws IOException {
+//		setPlayA(false);
+//		return getNumber();
+//	}
 
-	/**
-	 * PlayerB fragen.
-	 * @return die Nummer die PlayerB eingegeben hat.
-	 * @throws IOException weil halt Exception
-	 */
-	public int askB() throws IOException {
-		setPlayA(false);
-		return getNumber();
-	}
+	@Override
+	public int[] runAll(String playerAChoice, String playerBChoice) throws IOException {
 
-	/**
-	 * Erstellt und startet thread fuer spieler A und B.
-	 * @return int[] arry
-	 * @throws InterruptedException weil halt.
-	 * @throws IOException weil halt.
-	 */
-	public int[] runAll() throws InterruptedException, IOException {
-
-		
+		askForNumber("a", playerAChoice);
+		askForNumber("b", playerBChoice);
 		final Thread threadA = new Thread(new InnerRun(true) );
 		final Thread threadB = new Thread(new InnerRun(false) );
 		
 		threadA.start();
 		threadB.start();
 		
-		threadA.join();
-		threadB.join();
+		try {
+			threadA.join();
+			threadB.join();
+		} catch (InterruptedException exception) {
+			System.out.println("IOException: " + exception);
+			
+		}
 		
 		final int[] output = new int[2];
 		System.arraycopy(playerInput, 0, output, 0, playerInput.length);

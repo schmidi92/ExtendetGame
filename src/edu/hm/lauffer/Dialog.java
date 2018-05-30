@@ -13,6 +13,8 @@ public interface Dialog {
 	 * Wartet auf eingabe durch den Benutzer.
 	 * Liest Eingabe ein und returnd den Wert.
 	 * @return int Wert den Benutzer eingegeben hat
+	 * @param playerA ist es playerA
+	 * @param playerChoice moegliche auswahl des Spielers
 	 * @throws IOException Einlesen nicht moeglich
 	 */
 	int getNumber(boolean playerA, String playerChoice) throws IOException;
@@ -45,8 +47,16 @@ public interface Dialog {
 	 * @throws IOException 
 	 */
 	void printWinner(String winner) throws IOException;
+	
+	/**
+	 * Erstellt und startet runde.
+	 * @return int[] arry
+	 * @param playerAChoice was playerA eintippen darf
+	 * @param playerBChoice was playerB einttippen darf
+	 * @throws IOException weil halt.
+	 */
 	default int[] runAll(String playerAChoice, String playerBChoice) throws IOException{
-		int[] result = new int[2];
+		final int[] result = new int[2];
 		result[0] = getNumber(true, playerAChoice);
 		result[1] = getNumber(false, playerBChoice);
 		return result;

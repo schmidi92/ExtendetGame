@@ -2,7 +2,7 @@ package edu.hm.lauffer;
 import java.io.IOException;
 
 import edu.hm.cs.rs.arch.a03_srp.UndercutMono;
-import edu.hm.lauffer.dialog.ThreadSocketDialog;
+import edu.hm.lauffer.dialog.StandardDialog;
 import edu.hm.lauffer.parameters.ChaosParameters;
 import edu.hm.lauffer.rules.DrawPotRule;
 
@@ -31,7 +31,7 @@ public class Main {
     	/**
     	 * Objekt zur Dialog Fuehrung.
     	 */
-    	final Dialog dial=new ThreadSocketDialog();
+    	final Dialog dial=new StandardDialog();
     	
     	/**
     	 * Obekt fur die Spielregeln.
